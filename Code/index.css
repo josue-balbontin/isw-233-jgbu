@@ -39,12 +39,20 @@ body {
 /* Estilos para la sección de Presentacion */
 
 .presentacion{
-    display: flex;
-    padding: 0 5%;
-    background-color: #252525;
+display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start; 
     
+    padding-top: 50px; 
+    padding-right: 5%;
+    padding-left: 5%;
+    
+    min-height: 80vh;
+    
+
+    background-image: url('img/Rectangle.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .presentacion__informacion{
@@ -52,7 +60,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center; 
-    padding-top: 3%;
+    padding-top: 0%;
     padding-bottom: 3%;
     gap: 10px; 
     line-height:  0.9;

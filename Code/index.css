@@ -139,8 +139,82 @@ display: flex;
    
 }
 
+/* Estilos para la sección de Sobre Mi */
 
+.sobre-mi{
+    margin-top: 1%;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: #252525;
+    border-radius: 5rem;
+}
 
+.sobre-mi__contenido {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+
+}
+
+.sobre-mi__contenido h1{
+    color: #FFD700;
+    text-align: center;
+    font-family: "Fira Code";
+    font-size: 2.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+    padding-top: 1%;
+}
+
+.sobre-mi__contenido p{
+    color: #FFF;
+    text-align: center;
+    font-family: "Open Sans";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    padding: 0 5%;
+}
+
+.sobre-mi__boton{
+    align-self: flex-end;
+    margin-right: 10%;
+    margin-bottom: 1%;
+    border-radius: 0.875rem;
+    border: 1px solid rgba(0, 0, 0, 0.56);
+    padding: 1%;
+    background: #4B4B4A;
+    color: #FFF;
+    text-align: center;
+    font-family: Assistant;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+/* Estilos para la sección de Proyectos */
+
+.proyectos{
+    background-color: #252525;
+    padding: 0 5%;
+}
+
+.proyectos h1{
+    color: #FFD700;
+    text-align: center;
+    font-family: "Fira Code";
+    font-size: 2.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+ 
+    padding-top: 1%;
+}
 
 /* Estilos para la sección de Footer */
 

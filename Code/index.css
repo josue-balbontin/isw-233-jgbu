@@ -93,6 +93,22 @@ body {
 
 
 
+.presentacion__imagenes__perfil{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    color: #FFF;
+}
+
+
+.presentacion__imagenes__redes{
+    display: flex;
+    gap: 20px;
+   
+}
+
+
+
 
 /* Estilos para la sección de Footer */
 

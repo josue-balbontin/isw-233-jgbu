@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300&display=swap');
+
+body {
+    background-color: #383838;
+    color: #ffffff;
+    margin: 0;
+
+}
+
+/* Estilos para la sección de Navbard */
+
+.navbard{
+    display: flex;
+    background-color: #151414;
+    padding: 10px;
+    align-items: center;
+}
+
+.navbard a:first-child {
+    margin-right: auto; 
+    padding-inline-start: 5%;
+    padding-right: 5%;
+}
+
+.navbard a{
+    color: #FFF;
+    font-family: "Open Sans";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    text-decoration: none;
+    padding-right: 5%;
+    
+}
+
+/* Estilos para la sección de Presentacion */
+
+.presentacion{
+    display: flex;
+    padding: 5%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.presentacion h1{
+    color: rgba(255, 215, 0, 0.95);
+    text-align: center;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #000;
+    font-family: "Sans Serif Collection";
+    font-size: 4.1875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.presentacion h2{
+    color: #FFF;
+    text-align: center;
+    font-family: "Open Sans";
+    font-size: 4.0625rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.presentacion p{
+    color: #FFF;
+    text-align: center;
+    font-family: "Open Sans";
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+
+
+.footer{
+    text-align: center;
+    background-color: #151414;
+    color: #ffffff;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+footer p{
+    color: #FFF;
+    font-family: "Open Sans";
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin: 1%;
+}
+

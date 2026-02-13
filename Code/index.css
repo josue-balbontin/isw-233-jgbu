@@ -145,16 +145,15 @@ display: flex;
 /* Estilos para la sección de Footer */
 
 .footer{
+    width: 100%;
     text-align: center;
     background-color: #151414;
     color: #ffffff;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+    position: static;
+    padding: 1px 0; 
 }
 
 footer p{
-    color: #FFF;
     font-family: "Open Sans";
     font-size: 0.9rem;
     font-style: normal;

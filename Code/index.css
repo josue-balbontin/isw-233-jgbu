@@ -16,6 +16,11 @@ body {
     background-color: #151414;
     padding: 10px;
     align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
 }
 
 .navbard a:first-child {
@@ -43,7 +48,7 @@ display: flex;
     justify-content: space-between;
     align-items: flex-start; 
     
-    padding-top: 50px; 
+    padding-top: 100px; 
     padding-right: 5%;
     padding-left: 5%;
     padding-bottom: clamp(80px, 9vw, 200px);
@@ -148,7 +153,7 @@ display: flex;
 
 /* Estilos para la sección de Sobre Mi */
 
-.sobre-mi{
+#sobre-mi{
     margin-top: 1%;
     margin-left: 5%;
     margin-right: 5%;
@@ -157,7 +162,7 @@ display: flex;
     padding: 1% 2%;
 }
 
-.sobre-mi__contenido {
+#sobre-mi__contenido {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -165,7 +170,7 @@ display: flex;
 
 }
 
-.sobre-mi__contenido h1{
+#sobre-mi__contenido h1{
     color: #FFD700;
     text-align: center;
     font-family: "Fira Code";
@@ -177,10 +182,10 @@ display: flex;
     padding-top: 1%;
 }
 
-.sobre-mi__contenido p{
+#sobre-mi__contenido p{
     color: #FFF;
     text-align: center;
-    font-family: "Open Sans";
+
     font-size: 1rem;
     font-style: normal;
     font-weight: 300;
@@ -188,7 +193,7 @@ display: flex;
     padding: 0 5%;
 }
 
-.sobre-mi__boton{
+#sobre-mi__boton{
     align-self: flex-end;
     margin-right: 10%;
     margin-bottom: 1%;
@@ -250,7 +255,8 @@ display: flex;
 
 .experiencia__proyecto img{
     width: 40%;
-    height: 40%;
+    height: auto;
+    max-height: 300px;
     object-fit: cover;
     border-radius: 10px;
     margin: 20px;

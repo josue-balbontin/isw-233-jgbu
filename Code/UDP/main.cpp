@@ -3,7 +3,6 @@
 #include <vector>
 #include <cstring>
 
-#include <SFML/Audio.hpp>
 
 #include <winsock2.h>
 #include <ws2tcpip.h>

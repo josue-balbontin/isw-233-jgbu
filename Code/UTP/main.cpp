@@ -3,6 +3,7 @@
 #include <vector>
 #include <cstring>
 
+#include "class/Seabattleship.cpp"
 
 #include <winsock2.h>
 #include <ws2tcpip.h>
@@ -14,8 +15,9 @@ using namespace std;
 
 
 void StartServer(int port){
+    
 
-    SOCKET misocket = socket(AF_INET, SOCK_DGRAM, 0);
+    SOCKET misocket = socket(AF_INET, SOCK_STREAM, 0);
 
     sockaddr_in direccionpropia;
 
@@ -30,26 +32,36 @@ void StartServer(int port){
         return ;
     }
 
-    cout<<"Servidor iniciado, esperando mensajes en el puerto "<<port<<endl ;
-
-    char buffer[256];
-
-    while(true){
-        memset(buffer, 0, sizeof(buffer));
-
-        int bytesReceived = recvfrom(misocket, buffer , sizeof(buffer), 0, NULL, NULL);
-
-        if(bytesReceived > 0){
-            cout<<"Mensaje recibido: "<<buffer<<endl ;
-        }
-
+    if(listen(misocket, 1) == SOCKET_ERROR){
+        cerr<<"Error al escuchar en el socket"<<endl ;
+        return ;
     }
+    else{
+        cout<<"Servidor iniciado, esperando mensajes en el puerto "<<port<<endl ;
+
+        SOCKET clientSocket = accept(misocket, nullptr, nullptr);
+
+        char buffer[256];
+
+        while(true){
+            memset(buffer, 0, sizeof(buffer));
+
+            int bytesReceived = recv(clientSocket, buffer , sizeof(buffer), 0);
+
+            if(bytesReceived > 0){
+                cout<<"Mensaje recibido: "<<buffer<<endl ;
+            }
+
+        }
+    }
+
+  
 
 }
 
 void StartClient(int port , string ip){
     sockaddr_in direccion; 
-    SOCKET clientSocket = socket(AF_INET, SOCK_DGRAM, 0);
+    SOCKET clientSocket = socket(AF_INET, SOCK_STREAM, 0);
     
 
     memset(&direccion, 0, sizeof(direccion));
@@ -58,7 +70,14 @@ void StartClient(int port , string ip){
     direccion.sin_port = htons(port);
     direccion.sin_addr.s_addr = inet_addr(ip.c_str());
 
-  
+    if(connect(clientSocket, (sockaddr*)&direccion, sizeof(direccion)) == SOCKET_ERROR){
+        cerr<<"Error al conectar con el servidor"<<endl ;
+        return ;
+    }
+    else{
+        cout<<"Conectado al servidor en "<<ip<<":"<<port<<endl ;
+    }
+
 
     string mensaje;
 
@@ -68,7 +87,7 @@ void StartClient(int port , string ip){
         
         if (mensaje == "salir") break;
 
-        int bytesEnviados = sendto(clientSocket, mensaje.c_str(), mensaje.size(), 0, (sockaddr*)&direccion, sizeof(direccion));
+        int bytesEnviados = send(clientSocket, mensaje.c_str(), mensaje.size(), 0);
         
         if (bytesEnviados == SOCKET_ERROR) {
             cout << "Error al enviar." << endl;

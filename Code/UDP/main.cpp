@@ -2,7 +2,9 @@
 #include <string>
 #include <vector>
 #include <cstring>
+#include <cstdint>
 
+#include <SFML/Audio.hpp>
 
 #include <winsock2.h>
 #include <ws2tcpip.h>
@@ -32,16 +34,28 @@ void StartServer(int port){
 
     cout<<"Servidor iniciado, esperando mensajes en el puerto "<<port<<endl ;
 
-    char buffer[256];
+    char buffer[65000];
+    sf::Sound sound;
 
     while(true){
         memset(buffer, 0, sizeof(buffer));
 
         int bytesReceived = recvfrom(misocket, buffer , sizeof(buffer), 0, NULL, NULL);
 
-        if(bytesReceived > 0){
-            cout<<"Mensaje recibido: "<<buffer<<endl ;
+        if (bytesReceived > 0) {
+            // 2. Reconstruir a 16-bit
+            std::vector<sf::Int16> muestras(bytesReceived);
+            for(int i=0; i<bytesReceived; i++) {
+                muestras[i] = buffer[i] * 256; // Magia: 8bit -> 16bit
+            }
+
+            sf::SoundBuffer sb;
+            sb.loadFromSamples(muestras.data(), bytesReceived, 1, 44100);
+            sound.setBuffer(sb);
+            sound.play();
+             cout<<"Mensaje recibido: "<<endl ;
         }
+
 
     }
 
@@ -50,6 +64,7 @@ void StartServer(int port){
 void StartClient(int port , string ip){
     sockaddr_in direccion; 
     SOCKET clientSocket = socket(AF_INET, SOCK_DGRAM, 0);
+    sf::SoundBufferRecorder recorder;
     
 
     memset(&direccion, 0, sizeof(direccion));
@@ -58,22 +73,46 @@ void StartClient(int port , string ip){
     direccion.sin_port = htons(port);
     direccion.sin_addr.s_addr = inet_addr(ip.c_str());
 
-  
+    cout<<"Cliente iniciado, enviando mensajes al servidor "<<ip<<" en el puerto "<<port<<endl ;
+   
+    cin.ignore(); 
 
-    string mensaje;
+    string ent; 
+    
+    do{
+       
+        recorder.start(); 
 
-    while(true) {
-        cout << "Escribe mensaje (o 'salir'): ";
-        cin >> mensaje;
-        
-        if (mensaje == "salir") break;
+        sf::sleep(sf::milliseconds(1500)); 
 
-        int bytesEnviados = sendto(clientSocket, mensaje.c_str(), mensaje.size(), 0, (sockaddr*)&direccion, sizeof(direccion));
-        
+        recorder.stop();
+
+        const sf::SoundBuffer& bufferSFML = recorder.getBuffer();
+        const sf::Int16* muestras16bit = bufferSFML.getSamples();
+        size_t cantidadMuestras = bufferSFML.getSampleCount();
+
+        vector<int8_t> bufferRed;
+
+        for(size_t i = 0; i < cantidadMuestras; i++) {
+            bufferRed.push_back(muestras16bit[i] / 256);
+        }
+
+
+        int bytesEnviados = sendto(clientSocket, (char*)bufferRed.data(), bufferRed.size(), 0, (sockaddr*)&direccion, sizeof(direccion));
+            
         if (bytesEnviados == SOCKET_ERROR) {
             cout << "Error al enviar." << endl;
         }
-    }
+        else{
+            cout<<"mensaje enviado"<<endl ; 
+        }
+
+        cout<<"escriba env para enviar un mensaje..."<<endl ;
+        cin>>ent ;
+
+
+    }while(ent == "env");
+    
 
     closesocket(clientSocket);
   

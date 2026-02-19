@@ -7,10 +7,14 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "-IC:\\SFML\\include",
+                "-IC:\\SFML-ucrt-13.2\\include",
+                "-LC:\\SFML-ucrt-13.2\\lib",
                 "${file}",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "-lsfml-audio",
+                "-lsfml-system",
+                "-lopenal32",
                 "-lws2_32"
             ],
             "options": {

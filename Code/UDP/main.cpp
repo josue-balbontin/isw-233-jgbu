@@ -32,10 +32,15 @@ void StartServer(int port){
         return ;
     }
 
+    DWORD timeoutMs = 200;
+    setsockopt(misocket, SOL_SOCKET, SO_RCVTIMEO, (const char*)&timeoutMs, sizeof(timeoutMs));
+
     cout<<"Servidor iniciado, esperando mensajes en el puerto "<<port<<endl ;
 
     char buffer[65000];
     sf::Sound sound;
+    sf::SoundBuffer soundBuffer;
+    vector<std::int8_t> audioAcumulado;
 
     while(true){
         memset(buffer, 0, sizeof(buffer));
@@ -43,17 +48,16 @@ void StartServer(int port){
         int bytesReceived = recvfrom(misocket, buffer , sizeof(buffer), 0, NULL, NULL);
 
         if (bytesReceived > 0) {
-            // 2. Reconstruir a 16-bit
+
             std::vector<sf::Int16> muestras(bytesReceived);
             for(int i=0; i<bytesReceived; i++) {
-                muestras[i] = buffer[i] * 256; // Magia: 8bit -> 16bit
+                muestras[i] = buffer[i] * 256;
             }
 
-            sf::SoundBuffer sb;
-            sb.loadFromSamples(muestras.data(), bytesReceived, 1, 44100);
-            sound.setBuffer(sb);
+            soundBuffer.loadFromSamples(muestras.data(), bytesReceived, 1, 44100);
+            sound.setBuffer(soundBuffer);
             sound.play();
-             cout<<"Mensaje recibido: "<<endl ;
+             cout<<"Mensaje recibido: "<<bytesReceived<<" bytes"<<endl ;
         }
 
 
@@ -73,6 +77,9 @@ void StartClient(int port , string ip){
     direccion.sin_port = htons(port);
     direccion.sin_addr.s_addr = inet_addr(ip.c_str());
 
+    recorder.setChannelCount(1);
+
+
     cout<<"Cliente iniciado, enviando mensajes al servidor "<<ip<<" en el puerto "<<port<<endl ;
    
     cin.ignore(); 
@@ -80,8 +87,8 @@ void StartClient(int port , string ip){
     string ent; 
     
     do{
-       
-        recorder.start(); 
+        
+        recorder.start(44100); 
 
         sf::sleep(sf::milliseconds(1500)); 
 
@@ -91,7 +98,12 @@ void StartClient(int port , string ip){
         const sf::Int16* muestras16bit = bufferSFML.getSamples();
         size_t cantidadMuestras = bufferSFML.getSampleCount();
 
+        if (cantidadMuestras > static_cast<size_t>(65000)) {
+            cantidadMuestras = 65000;
+        }
+
         vector<int8_t> bufferRed;
+        bufferRed.reserve(cantidadMuestras);
 
         for(size_t i = 0; i < cantidadMuestras; i++) {
             bufferRed.push_back(muestras16bit[i] / 256);
@@ -101,11 +113,9 @@ void StartClient(int port , string ip){
         int bytesEnviados = sendto(clientSocket, (char*)bufferRed.data(), bufferRed.size(), 0, (sockaddr*)&direccion, sizeof(direccion));
             
         if (bytesEnviados == SOCKET_ERROR) {
-            cout << "Error al enviar." << endl;
+            cout << "Error al enviar. Codigo: " << WSAGetLastError() << endl;
         }
-        else{
-            cout<<"mensaje enviado"<<endl ; 
-        }
+
 
         cout<<"escriba env para enviar un mensaje..."<<endl ;
         cin>>ent ;
@@ -139,6 +149,7 @@ int main() {
     cin>>opcion ;
     while(opcion!=1 && opcion!=2){
         cout<<"Opcion no valida, ingrese 1 para iniciar el servidor o 2 para iniciar el cliente"<<endl ;
+        opcion=0 ;
         cin>>opcion ;
     }
 

@@ -65,7 +65,7 @@ void StartServer(int port){
 
 }
 
-void StartClient(int port , string ip){
+void StartClient(int port){
     sockaddr_in direccion; 
     SOCKET clientSocket = socket(AF_INET, SOCK_DGRAM, 0);
     sf::SoundBufferRecorder recorder;
@@ -75,18 +75,20 @@ void StartClient(int port , string ip){
     
     direccion.sin_family = AF_INET;
     direccion.sin_port = htons(port);
-    direccion.sin_addr.s_addr = inet_addr(ip.c_str());
+   
 
     recorder.setChannelCount(1);
 
 
-    cout<<"Cliente iniciado, enviando mensajes al servidor "<<ip<<" en el puerto "<<port<<endl ;
-   
-    cin.ignore(); 
+    
 
-    string ent; 
+    string ip; 
     
     do{
+      
+        cout<<"Ingrese la direccion IP del servidor al que desea enviar el audio (ejemplo: 127.0.0.1) o exit para salir"<<endl ;
+        cin>>ip ;
+        direccion.sin_addr.s_addr = inet_addr(ip.c_str());
         
         recorder.start(44100); 
 
@@ -117,11 +119,10 @@ void StartClient(int port , string ip){
         }
 
 
-        cout<<"escriba env para enviar un mensaje..."<<endl ;
-        cin>>ent ;
 
 
-    }while(ent == "env");
+
+    }while(ip != "exit");
     
 
     closesocket(clientSocket);
@@ -156,11 +157,7 @@ int main() {
     if(opcion==1){
         StartServer(puerto);
     }else{
-        string ip ;
-        cout<<"Ingrese la direccion IP del servidor"<<endl ;
-        cin>>ip ;
-
-        StartClient(puerto, ip);
+        StartClient(puerto);
     }
 
     WSACleanup(); 

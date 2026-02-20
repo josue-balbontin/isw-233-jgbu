@@ -1,0 +1,8 @@
+FROM ubuntu:24.04
+
+RUN  apt-get update && \ apt-get install -y --no-install-recommends wine64 wine32 && \
+
+EXPOSE 5000
+COPY  exe/ /site_config
+
+

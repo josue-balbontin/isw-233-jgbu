@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <utility>
+#include <cctype>
 #include <ws2tcpip.h>
 
 #include "statescelda.h"
@@ -34,6 +35,12 @@ class SeabattleAgent{
                     std::string move;
                     std::cin >> move;
                     auto [x, y] = parse_move(move);
+
+                    if(x < 0 || y < 0){
+                        std::cout << "Movimiento invalido. Use formato A1..H8." << std::endl;
+                        continue;
+                    }
+
                     SendMove(x, y);
                     RespuestaState result = ReadResult();
                     if(result == RMISS){
@@ -46,26 +53,45 @@ class SeabattleAgent{
                     
                 }else{
                     std::pair<int , int > movimiento = ReadMove();
+                    int x = movimiento.first;
+                    int y = movimiento.second;
 
-                    // turno del oponente
-                    // 1. Leer movimiento del oponente
-                    // 2. Procesar disparo en el tablero propio
-                    // 3. Enviar resultado al oponente
-                    // 4. Actualizar tablero propio con el resultado
+                    if(x < 0 || y < 0){
+                        SendResult(RMISS);
+                        std::cout << "Movimiento rival invalido." << std::endl;
+                    }else{
+                        RespuestaState result = mitablero.shoot(x, y);
+                        SendResult(result);
+                        std::cout << "Movimiento rival: " << move_to_string(x, y) << std::endl;
+                    }
                 }
+
+                print_fields();
                 iniciador = !iniciador; // alternar turnos
             }
         
         }
 
         std::pair<int, int> parse_move(std::string move){
-            
-            return {move[0]-'A', move[1]-'1' -1};
+            if(move.size() < 2) return {-1, -1};
+
+            char col = static_cast<char>(std::toupper(static_cast<unsigned char>(move[0])));
+            char row = move[1];
+
+            if(col < 'A' || col > 'H') return {-1, -1};
+            if(row < '1' || row > '8') return {-1, -1};
+
+            int x = row - '1';
+            int y = col - 'A';
+            return {x, y};
         }
 
         std::string move_to_string(int x, int y){
-           
-            return std::to_string(x +65) + "," + std::to_string(y);
+            if(x < 0 || y < 0 || x > 7 || y > 7) return "??";
+            std::string s;
+            s.push_back(static_cast<char>('A' + y));
+            s.push_back(static_cast<char>('1' + x));
+            return s;
         }
 
         bool is_game_ended(){
@@ -74,13 +100,17 @@ class SeabattleAgent{
         }
 
          std::pair<int, int> ReadMove(){
-            char buffer[2];
+            char buffer[16] = {0};
             int bytesRecibidos = recv(socket, buffer, sizeof(buffer) - 1, 0);
-            if (bytesRecibidos > 0) {
-                buffer[bytesRecibidos] = '\0';
-                
-            }
-            return parse_move(std::string(buffer));
+            if (bytesRecibidos <= 0) return {-1, -1};
+
+            buffer[bytesRecibidos] = '\0';
+
+            std::string move;
+            move.push_back(buffer[0]);
+            if(bytesRecibidos > 1) move.push_back(buffer[1]);
+
+            return parse_move(move);
         }
 
         RespuestaState ReadResult(){

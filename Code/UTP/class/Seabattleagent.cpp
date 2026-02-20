@@ -9,6 +9,7 @@
 
 #include "statescelda.h"
 #include "Seabattlefield.cpp"
+#include "staterespuesta.h"
 
 class SeabattleAgent{
     private:
@@ -29,12 +30,23 @@ class SeabattleAgent{
             // bucle principal del juego, alternando turnos entre el jugador y el oponente, procesando disparos y actualizando los tableros
             while(!is_game_ended()){
                 if(iniciador){
-                    // turno del jugador
-                    ReadMove();
-                    // 2. Enviar movimiento al oponente
-                    // 3. Leer resultado del movimiento
-                    // 4. Actualizar tablero del oponente con el resultado
+                      std::cout<<"Ingrese su movimiento (ejemplo: A1): ";
+                    std::string move;
+                    std::cin >> move;
+                    auto [x, y] = parse_move(move);
+                    SendMove(x, y);
+                    RespuestaState result = ReadResult();
+                    if(result == RMISS){
+                        oponentetablero.mark_miss(x, y);
+                    }else if(result == RHIT){
+                        oponentetablero.mark_hit(x, y);
+                    }else if(result == RKILL){
+                        oponentetablero.mark_kill(x, y);
+                    }
+                    
                 }else{
+                    std::pair<int , int > movimiento = ReadMove();
+
                     // turno del oponente
                     // 1. Leer movimiento del oponente
                     // 2. Procesar disparo en el tablero propio
@@ -61,25 +73,36 @@ class SeabattleAgent{
             return mitablero.is_loser() || oponentetablero.is_loser();
         }
 
-        void ReadMove(){
+         std::pair<int, int> ReadMove(){
             char buffer[2];
             int bytesRecibidos = recv(socket, buffer, sizeof(buffer) - 1, 0);
             if (bytesRecibidos > 0) {
                 buffer[bytesRecibidos] = '\0';
-                std::cout << "Movimiento recibido: " << buffer << std::endl;
+                
             }
+            return parse_move(std::string(buffer));
         }
 
-        void ReadResult(){
-            // recibir resultado del movimiento 
+        RespuestaState ReadResult(){
+            char buffer[2];
+            int bytesRecibidos = recv(socket, buffer, sizeof(buffer) - 1, 0);
+            if (bytesRecibidos > 0) {
+                buffer[bytesRecibidos] = '\0';
+                std::cout << "Resultado recibido: " << buffer << std::endl;
+            }
+            return static_cast<RespuestaState>(buffer[0]);
         }
 
-        void SendMove(int x, int y){
-            // enviar movimiento al oponente 
+        void SendMove(int x , int y){
+         
+            std::string moveStr = move_to_string(x, y);
+            send(socket, moveStr.c_str(), static_cast<int>(moveStr.size()), 0);
         }
 
-        void SendResult(std::string result){
-            // enviar resultado del movimiento al oponente 
+        void SendResult(RespuestaState result){
+            char buffer[2];
+            buffer[0] = static_cast<char>(result);
+            send(socket, buffer, 1, 0);
         }
 
         void print_fields(){

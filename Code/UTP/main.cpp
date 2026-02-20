@@ -3,7 +3,7 @@
 #include <vector>
 #include <cstring>
 
-#include "class/Seabattleship.cpp"
+#include "class/Seabattlefield.cpp"
 
 #include <winsock2.h>
 #include <ws2tcpip.h>

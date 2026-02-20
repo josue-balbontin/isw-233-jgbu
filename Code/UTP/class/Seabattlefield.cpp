@@ -14,6 +14,10 @@ public:
         tablero.resize(size, vector<CeldaState>(size, UNKNOWN));
     }
 
+    int size() {
+        return tablero.size();
+    }
+
     void get_random_field(int semilla){
         //logica para generar un campo de batalla aleatorio usando la semilla
     }

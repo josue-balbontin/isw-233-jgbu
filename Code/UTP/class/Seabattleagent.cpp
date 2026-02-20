@@ -17,7 +17,7 @@ class SeabattleAgent{
             oponentetablero = SeabattleField(mitablero.size());
             this->socket = socket;
         }
-
+ 
 
         void star_game(bool iniciador){
             // bucle principal del juego, alternando turnos entre el jugador y el oponente, procesando disparos y actualizando los tableros

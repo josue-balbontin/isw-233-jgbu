@@ -1,7 +1,7 @@
 #pragma once
 
 enum RespuestaState{
-    MISS,
-    HIT,
-    KILL
+    RMISS,
+    RHIT,
+    RKILL
 }; 

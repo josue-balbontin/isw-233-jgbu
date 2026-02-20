@@ -3,10 +3,10 @@
 #include <vector>
 #include <cstring>
 
-#include "class/Seabattlefield.cpp"
-
 #include <winsock2.h>
 #include <ws2tcpip.h>
+
+#include "class/Seabattlefield.cpp"
 
 #pragma comment(lib, "ws2_32.lib")
 

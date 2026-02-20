@@ -1,6 +1,8 @@
 #pragma once 
 #include <vector>
 #include <iostream>
+#include <ws2tcpip.h>
+
 #include "statescelda.h"
 #include "Seabattlefield.cpp"
 
@@ -8,22 +10,14 @@ class SeabattleAgent{
     private:
         SeabattleField mitablero;
         SeabattleField oponentetablero;
-        int socket;
+        SOCKET socket;
     public:
-        void init(const SeabattleField &tablero){
+        void init(const SeabattleField &tablero ,const  SOCKET &socket){
             mitablero = tablero;
             oponentetablero = SeabattleField(mitablero.size());
+            this->socket = socket;
         }
 
-        void startClient(){
-            //logica para iniciar el cliente, conectarse al servidor y manejar la comunicación 
-        }
-
-        void startServer(){
-            //logica para iniciar el servidor, esperar conexiones y manejar la comunicación
-        }
-
-        
 
         void star_game(bool iniciador){
             // bucle principal del juego, alternando turnos entre el jugador y el oponente, procesando disparos y actualizando los tableros

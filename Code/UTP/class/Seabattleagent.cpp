@@ -79,24 +79,28 @@ class SeabattleAgent{
         }
 
         void print_fields(){
-            std::cout<<"Tablero propio:" ;
-            std::cout<<"A B C D E F G H"<<std::endl ;
+            std::cout<<"Tablero propio:"<<std::endl ;
+            std::cout<<"   A B C D E F G H"<<std::endl ;
+            std::cout<<"  ------------------"<<std::endl ;
             for(int i = 0; i < mitablero.size(); i++){
-                std::cout<<i<<" ";
+                std::cout<<i+1<<" |";
                 for(int j = 0; j < mitablero.size(); j++){
                     std::cout<<static_cast<char>(mitablero.get_celda(i,j))<<" ";
                 }
-                std::cout<<std::endl;
+                std::cout<<"|"<<std::endl;
             }
+             std::cout<<"  ------------------"<<std::endl ;
             std::cout<<"Tablero del oponente:" <<std::endl ;
-            std::cout<<"A B C D E F G H"<<std::endl ;
+            std::cout<<"   A B C D E F G H"<<std::endl ;
+            std::cout<<"  ------------------"<<std::endl ;
             for(int i = 0; i < oponentetablero.size(); i++){
-                std::cout<<i<<" ";
+                std::cout<<i+1<<" |";
                 for(int j = 0; j < oponentetablero.size(); j++){
                     std::cout<<static_cast<char>(oponentetablero.get_celda(i,j))<<" ";
                 }
-                std::cout<<std::endl;
+                std::cout<<"|"<<std::endl;
             }
+             std::cout<<"  ------------------"<<std::endl ;
         }
 
 

@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <random>
 #include "statescelda.h"
 #include "staterespuesta.h"
 
@@ -42,7 +43,77 @@ public:
     }
 
     void get_random_field(int semilla){
-        //logica para generar un campo de batalla aleatorio usando la semilla
+        int n = size();
+        if(n <= 0) return;
+
+        std::mt19937 rng(static_cast<unsigned int>(semilla));
+        std::uniform_int_distribution<int> pos(0, n - 1);
+        std::uniform_int_distribution<int> dir(0, 1); 
+
+        vector<int> barcos = {4, 3, 3, 2, 2, 2, 1, 1, 1, 1};
+
+        while(true){
+            for(int i = 0; i < n; ++i){
+                for(int j = 0; j < n; ++j){
+                    tablero[i][j] = EMPTY;
+                }
+            }
+
+            bool completo = true;
+
+            for(int b = 0; b < (int)barcos.size(); ++b){
+                int largo = barcos[b];
+                bool puesto = false;
+
+                for(int intento = 0; intento < 5000 && !puesto; ++intento){
+                    int x = pos(rng);
+                    int y = pos(rng);
+                    int horizontal = dir(rng) == 0;
+
+                    int finX = x + (horizontal ? 0 : largo - 1);
+                    int finY = y + (horizontal ? largo - 1 : 0);
+                    if(finX >= n || finY >= n) continue;
+
+                    bool ok = true;
+
+                    for(int k = 0; k < largo && ok; ++k){
+                        int cx = x + (horizontal ? 0 : k);
+                        int cy = y + (horizontal ? k : 0);
+
+                        if(tablero[cx][cy] == SHIP){
+                            ok = false;
+                            break;
+                        }
+
+                        for(int nx = cx - 1; nx <= cx + 1 && ok; ++nx){
+                            for(int ny = cy - 1; ny <= cy + 1; ++ny){
+                                if(nx >= 0 && ny >= 0 && nx < n && ny < n && tablero[nx][ny] == SHIP){
+                                    ok = false;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    if(!ok) continue;
+
+                    for(int k = 0; k < largo; ++k){
+                        int cx = x + (horizontal ? 0 : k);
+                        int cy = y + (horizontal ? k : 0);
+                        tablero[cx][cy] = SHIP;
+                    }
+
+                    puesto = true;
+                }
+
+                if(!puesto){
+                    completo = false;
+                    break;
+                }
+            }
+
+            if(completo) return;
+        }
     }
 
     RespuestaState shoot(int x, int y){

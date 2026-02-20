@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <cstring>
+#include <cstdlib>
 
 #include <winsock2.h>
 #include <ws2tcpip.h>
@@ -15,9 +16,7 @@ using namespace std;
 
 
 
-void StartServer(int port){
-    
-
+void StartServer(int seed, int port){
     SOCKET misocket = socket(AF_INET, SOCK_STREAM, 0);
 
     sockaddr_in direccionpropia;
@@ -44,11 +43,14 @@ void StartServer(int port){
 
 
         SeabattleField mitablero(8);
-        mitablero.get_random_field(12345);
-         SeabattleAgent miagente;
+        mitablero.get_random_field(seed);
+        SeabattleAgent miagente;
         miagente.init(mitablero, clientSocket);
 
         miagente.star_game(false);
+
+        closesocket(clientSocket);
+        closesocket(misocket);
 
     }
 
@@ -56,7 +58,7 @@ void StartServer(int port){
 
 }
 
-void StartClient(int port , string ip){
+void StartClient(int seed, int port , const string& ip){
     sockaddr_in direccion; 
     SOCKET clientSocket = socket(AF_INET, SOCK_STREAM, 0);
     
@@ -77,7 +79,7 @@ void StartClient(int port , string ip){
 
 
     SeabattleField mitablero(8);
-    mitablero.get_random_field(12345);
+    mitablero.get_random_field(seed);
     SeabattleAgent miagente;
     miagente.init(mitablero, clientSocket);
     
@@ -93,24 +95,26 @@ void StartClient(int port , string ip){
 }
 
 
-int main() {
+int main(int argc, char* argv[]) {
     WSADATA wsaData;
     if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
         std::cerr << "Error al iniciar Winsock" << std::endl;
         return -1;
     }
 
-
-    SeabattleField mitablero(8);
-    mitablero.get_random_field(12345);
-
-    SeabattleAgent miagente;
-
-    miagente.init(mitablero, INVALID_SOCKET);
-    
-    miagente.print_fields();
-
-
+    if (argc == 3) {
+        int seed = std::atoi(argv[1]);
+        int port = std::atoi(argv[2]);
+        StartServer(seed, port);
+    } else if (argc == 4) {
+        int seed = std::atoi(argv[1]);
+        std::string ip = argv[2];
+        int port = std::atoi(argv[3]);
+        StartClient(seed, port, ip);
+    } else {
+        std::cout << "Uso servidor: program seed port" << std::endl;
+        std::cout << "Uso cliente : program seed server_ip port" << std::endl;
+    }
 
     WSACleanup(); 
     return 0;

@@ -29,6 +29,7 @@ class SeabattleAgent{
 
         void star_game(bool iniciador){
             // bucle principal del juego, alternando turnos entre el jugador y el oponente, procesando disparos y actualizando los tableros
+             print_fields();
             while(!is_game_ended()){
                 if(iniciador){
                       std::cout<<"Ingrese su movimiento (ejemplo: A1): ";
@@ -96,7 +97,7 @@ class SeabattleAgent{
 
         bool is_game_ended(){
 
-            return mitablero.is_loser() || oponentetablero.is_loser();
+            return mitablero.is_loser() ;
         }
 
          std::pair<int, int> ReadMove(){

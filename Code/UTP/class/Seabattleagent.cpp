@@ -30,7 +30,7 @@ class SeabattleAgent{
             while(!is_game_ended()){
                 if(iniciador){
                     // turno del jugador
-                    // 1. Leer movimiento del jugador
+                    ReadMove();
                     // 2. Enviar movimiento al oponente
                     // 3. Leer resultado del movimiento
                     // 4. Actualizar tablero del oponente con el resultado
@@ -47,23 +47,27 @@ class SeabattleAgent{
         }
 
         std::pair<int, int> parse_move(std::string move){
-            //logica para convertir un string de movimiento en coordenadas x,y
-            (void)move;
-            return {0, 0};
+            
+            return {move[0]-'A', move[1]-'1' -1};
         }
 
         std::string move_to_string(int x, int y){
-            //logica para convertir coordenadas x,y en un string de movimiento
-            return std::to_string(x) + "," + std::to_string(y);
+           
+            return std::to_string(x +65) + "," + std::to_string(y);
         }
 
         bool is_game_ended(){
-            //verifica si el juego ha terminado
+
             return mitablero.is_loser() || oponentetablero.is_loser();
         }
 
         void ReadMove(){
-            // recibir movimiento del oponente 
+            char buffer[2];
+            int bytesRecibidos = recv(socket, buffer, sizeof(buffer) - 1, 0);
+            if (bytesRecibidos > 0) {
+                buffer[bytesRecibidos] = '\0';
+                std::cout << "Movimiento recibido: " << buffer << std::endl;
+            }
         }
 
         void ReadResult(){

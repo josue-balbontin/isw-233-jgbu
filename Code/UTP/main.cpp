@@ -42,18 +42,14 @@ void StartServer(int port){
 
         SOCKET clientSocket = accept(misocket, nullptr, nullptr);
 
-        char buffer[256];
 
-        while(true){
-            memset(buffer, 0, sizeof(buffer));
+        SeabattleField mitablero(8);
+        mitablero.get_random_field(12345);
+         SeabattleAgent miagente;
+        miagente.init(mitablero, clientSocket);
 
-            int bytesReceived = recv(clientSocket, buffer , sizeof(buffer), 0);
+        miagente.star_game(false);
 
-            if(bytesReceived > 0){
-                cout<<"Mensaje recibido: "<<buffer<<endl ;
-            }
-
-        }
     }
 
   
@@ -80,20 +76,14 @@ void StartClient(int port , string ip){
     }
 
 
-    string mensaje;
+    SeabattleField mitablero(8);
+    mitablero.get_random_field(12345);
+    SeabattleAgent miagente;
+    miagente.init(mitablero, clientSocket);
+    
+    miagente.star_game(true);
 
-    while(true) {
-        cout << "Escribe mensaje (o 'salir'): ";
-        cin >> mensaje;
-        
-        if (mensaje == "salir") break;
 
-        int bytesEnviados = send(clientSocket, mensaje.c_str(), mensaje.size(), 0);
-        
-        if (bytesEnviados == SOCKET_ERROR) {
-            cout << "Error al enviar." << endl;
-        }
-    }
 
     closesocket(clientSocket);
   

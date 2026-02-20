@@ -1,8 +1,9 @@
+#pragma once
 
 enum CeldaState{
-    UNKNOWN,
-    EMPTY,
-    HIT,
-    KILL,
-    SHIP
+    UNKNOWN = '?',
+    EMPTY = ' ',
+    HIT= 'X',
+    KILL= '#',
+    SHIP= 'S'
 };

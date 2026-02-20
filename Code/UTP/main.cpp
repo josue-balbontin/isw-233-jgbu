@@ -7,6 +7,7 @@
 #include <ws2tcpip.h>
 
 #include "class/Seabattlefield.cpp"
+#include "class/Seabattleagent.cpp"
 
 #pragma comment(lib, "ws2_32.lib")
 
@@ -103,34 +104,23 @@ void StartClient(int port , string ip){
 
 
 int main() {
-    int puerto=0 ; 
-    cout<<"Ingrese el puerto"<<endl ; 
-    cin>>puerto ; 
-
-
     WSADATA wsaData;
     if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
         std::cerr << "Error al iniciar Winsock" << std::endl;
         return -1;
     }
 
-    cout<<"Ingrese 1 para iniciar el servidor o 2 para iniciar el cliente"<<endl ;
-    int opcion=0 ;
-    cin>>opcion ;
-    while(opcion!=1 && opcion!=2){
-        cout<<"Opcion no valida, ingrese 1 para iniciar el servidor o 2 para iniciar el cliente"<<endl ;
-        cin>>opcion ;
-    }
 
-    if(opcion==1){
-        StartServer(puerto);
-    }else{
-        string ip ;
-        cout<<"Ingrese la direccion IP del servidor"<<endl ;
-        cin>>ip ;
+    SeabattleField mitablero(8);
+    mitablero.get_random_field(12345);
 
-        StartClient(puerto, ip);
-    }
+    SeabattleAgent miagente;
+
+    miagente.init(mitablero, INVALID_SOCKET);
+    
+    miagente.print_fields();
+
+
 
     WSACleanup(); 
     return 0;

@@ -1,17 +1,16 @@
-#pragma once
+#ifndef SEABATTLEFIELD_CPP_INCLUDED
+#define SEABATTLEFIELD_CPP_INCLUDED
+
 #include <vector>
 #include <random>
 #include "statescelda.h"
 #include "staterespuesta.h"
 
-using namespace std;
-
 class SeabattleField{
 private:
-    vector<vector<CeldaState>> tablero;
+    std::vector<std::vector<CeldaState>> tablero;
 
-
-    bool validarkill(int x , int y){
+    bool validarkill(int x, int y){
         int n = size();
         if(x < 0 || y < 0 || x >= n || y >= n) return false;
 
@@ -30,16 +29,18 @@ private:
 
         return true;
     }
-   
-
 
 public:
-     SeabattleField(int size){
-        tablero.resize(size, vector<CeldaState>(size, UNKNOWN));
+    SeabattleField(int size){
+        tablero.resize(size, std::vector<CeldaState>(size, UNKNOWN));
     }
 
-    int size() {
-        return tablero.size();
+    int size() const {
+        return static_cast<int>(tablero.size());
+    }
+
+    CeldaState get_celda(int x, int y) const {
+        return tablero[x][y];
     }
 
     void get_random_field(int semilla){
@@ -48,9 +49,9 @@ public:
 
         std::mt19937 rng(static_cast<unsigned int>(semilla));
         std::uniform_int_distribution<int> pos(0, n - 1);
-        std::uniform_int_distribution<int> dir(0, 1); 
+        std::uniform_int_distribution<int> dir(0, 1);
 
-        vector<int> barcos = {4, 3, 3, 2, 2, 2, 1, 1, 1, 1};
+        std::vector<int> barcos = {4, 3, 3, 2, 2, 2, 1, 1, 1, 1};
 
         while(true){
             for(int i = 0; i < n; ++i){
@@ -61,14 +62,13 @@ public:
 
             bool completo = true;
 
-            for(int b = 0; b < (int)barcos.size(); ++b){
-                int largo = barcos[b];
+            for(int largo : barcos){
                 bool puesto = false;
 
                 for(int intento = 0; intento < 5000 && !puesto; ++intento){
                     int x = pos(rng);
                     int y = pos(rng);
-                    int horizontal = dir(rng) == 0;
+                    bool horizontal = (dir(rng) == 0);
 
                     int finX = x + (horizontal ? 0 : largo - 1);
                     int finY = y + (horizontal ? largo - 1 : 0);
@@ -122,7 +122,7 @@ public:
 
         if(tablero[x][y] == SHIP){
             mark_hit(x, y);
-            if(validarkill(x,y)){
+            if(validarkill(x, y)){
                 mark_kill(x, y);
                 return RKILL;
             }
@@ -138,8 +138,7 @@ public:
     }
 
     void mark_miss(int x, int y){
-        tablero[x][y] = EMPTY; 
-
+        tablero[x][y] = EMPTY;
     }
 
     void mark_hit(int x, int y){
@@ -156,8 +155,6 @@ public:
         for(int i = x + 1; i < n && tablero[i][y] == HIT; ++i) tablero[i][y] = KILL;
         for(int j = y - 1; j >= 0 && tablero[x][j] == HIT; --j) tablero[x][j] = KILL;
         for(int j = y + 1; j < n && tablero[x][j] == HIT; ++j) tablero[x][j] = KILL;
-
-      
     }
 
     bool is_loser(){
@@ -170,7 +167,6 @@ public:
         }
         return true;
     }
-
-
-
 };
+
+#endif

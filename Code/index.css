@@ -133,7 +133,7 @@ display: flex;
 
 
 
-.presentacion__imagenes__perfil{
+.presentacion__perfil{
     width: clamp(250px, 18vw, 400px);
     height: clamp(250px, 18vw, 400px);
     border-radius: 50%;
@@ -141,19 +141,19 @@ display: flex;
 }
 
 
-.presentacion__imagenes__redes{
+.presentacion__redes{
     display: flex;
     gap: 20px;
 }
 
-.presentacion__imagenes__redes img{
+.presentacion__redes img{
     width: clamp(50px, 2.5vw, 48px);
     height: auto;
 }
 
 /* Estilos para la sección de Sobre Mi */
 
-#sobre-mi{
+.sobre-mi{
     margin-top: 1%;
     margin-left: 5%;
     margin-right: 5%;
@@ -162,7 +162,7 @@ display: flex;
     padding: 1% 2%;
 }
 
-#sobre-mi__contenido {
+.sobre-mi__contenido {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -170,7 +170,7 @@ display: flex;
 
 }
 
-#sobre-mi__contenido h1{
+.sobre-mi__contenido h1{
     color: #FFD700;
     text-align: center;
     font-family: "Fira Code";
@@ -182,7 +182,7 @@ display: flex;
     padding-top: 1%;
 }
 
-#sobre-mi__contenido p{
+.sobre-mi__contenido p{
     color: #FFF;
     text-align: center;
 
@@ -193,7 +193,7 @@ display: flex;
     padding: 0 5%;
 }
 
-#sobre-mi__boton{
+.sobre-mi__boton{
     align-self: flex-end;
     margin-right: 10%;
     margin-bottom: 1%;
@@ -262,23 +262,47 @@ display: flex;
     margin: 20px;
 }
 
-.boton__informacion{
+.boton {
     align-self: center;
     border-radius: 0.875rem;
-    border: 1px solid rgba(0, 0, 0, 0.56);
     padding: 1%;
     width: 200px;
-    background: #4B4B4A;
-    color: #FFF;
     text-align: center;
-    font-family: Assistant;
     font-size: 1rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
 }
 
+.boton--informacion{
+     border: 1px solid rgba(0, 0, 0, 0.56);
+    background: #4B4B4A;
+    font-family: Assistant;
+    color: #FFF;
+}
+
 /* Estilos para la sección de Blog */
+.blog{
+    background-color: #252525;
+    padding: 0 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2%;
+}
+
+.blog h1{
+    color: #FFD700;
+    text-align: center;
+    font-family: "Fira Code";
+    font-size: 2.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+ 
+    padding-top: 1%;
+}
+
 .blog__lista{
     display: flex;
     flex-direction: row;

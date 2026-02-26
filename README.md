@@ -60,4 +60,4 @@ Implementa el juego Batalla Naval entre dos jugadores conectados por TCP. Uno ac
 
 ## ChatIA
 
-[Gemini](https://gemini.google.com/share/09dd20022c09)
+[Gemini](https://gemini.google.com/share/a6f8faaf7c1a)

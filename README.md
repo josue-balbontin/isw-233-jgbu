@@ -33,4 +33,10 @@ Diseño del CV interactivo en Figma para visualizar la estructura y el diseño a
 
 Chat de IA para resolver dudas y obtener sugerencias sobre el desarrollo del CV interactivo, facilitando el proceso de aprendizaje y mejorando la calidad del proyecto.
 
-[Chat](https://gemini.google.com/share/9b194c9abd6f)
+* Sprint 1
+
+    [Chat](https://gemini.google.com/share/9b194c9abd6f)
+
+* Sprint 2
+
+    [Chat](https://gemini.google.com/share/bd271764e3a7)

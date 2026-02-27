@@ -13,7 +13,8 @@ Soy Josué Balbontín. Este repositorio reúne ejercicios y un CV interactivo pa
 - 'Code/vendor' incluye bibliotecas externas utilizadas en el proyecto.
 
 
-* Bloques identificados
+### Bloques identificados
+
 - blog : Diseño y maquetación de la cuadrícula/lista de artículos e investigaciones.
 - boton : Diseño base de los botones del CV y las distintas variantes de botones.
 - experiencia :  Diseño y estructura de las secciónes de experiencia del CV renderiza tanto Proyectos Destacados como la de certificados.

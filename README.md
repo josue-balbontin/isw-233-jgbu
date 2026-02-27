@@ -13,6 +13,15 @@ Soy Josué Balbontín. Este repositorio reúne ejercicios y un CV interactivo pa
 - 'Code/vendor' incluye bibliotecas externas utilizadas en el proyecto.
 
 
+* Bloques identificados
+- blog : Diseño y maquetación de la cuadrícula/lista de artículos e investigaciones.
+- boton : Diseño base de los botones del CV y las distintas variantes de botones.
+- experiencia :  Diseño y estructura de las secciónes de experiencia del CV renderiza tanto Proyectos Destacados como la de certificados.
+- footer : Diseño y estructura del pie de página del CV.
+- navbar : Diseño y estructura de la barra de navegación del CV.
+- presentacion : Diseño y estructura de la sección de presentación del CV es la que introduce el perfil y las redes sociales.
+- sobre-mi : Diseño y estructura de la sección "Sobre mí" del CV seccion biografica y resumen profesional.
+
 ## Que se hace
 
 Se desarrollará un CV interactivo utilizando JavaScript, HTML y CSS. El CV incluirá secciones como experiencia laboral, educación, habilidades y proyectos, con interactividad para mejorar la experiencia del usuario.

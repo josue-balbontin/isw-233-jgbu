@@ -1,11 +1,11 @@
 @import './vendor/externs.css';
-@import './block/blog/blog.css';
-@import './block/boton/boton.css';
-@import './block/experiencia/experiencia.css';
-@import './block/footer/footer.css';
-@import './block/navbard/navbard.css';
-@import './block/presentacion/presentacion.css';
-@import './block/sobre-mi/sobre-mi.css';
+@import './blocks/blog/blog.css';
+@import './blocks/boton/boton.css';
+@import './blocks/experiencia/experiencia.css';
+@import './blocks/footer/footer.css';
+@import './blocks/navbard/navbard.css';
+@import './blocks/presentacion/presentacion.css';
+@import './blocks/sobre-mi/sobre-mi.css';
 
 
 body {

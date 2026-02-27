@@ -10,6 +10,8 @@ Soy Josué Balbontín. Este repositorio reúne ejercicios y un CV interactivo pa
 - 'Code/img' almacena imágenes utilizadas en el proyecto.
 - 'Code/index.css' define estilos para el CV.
 - 'Code/index.html' es la página principal del CV interactivo.
+- 'Code/vendor' incluye bibliotecas externas utilizadas en el proyecto.
+
 
 ## Que se hace
 

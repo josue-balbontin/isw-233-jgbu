@@ -1,0 +1,29 @@
+.navbard{
+    display: flex;
+    background-color: #151414;
+    padding: 10px;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+}
+
+.navbard a:first-child {
+    margin-right: auto; 
+    padding-inline-start: 5%;
+    padding-right: 5%;
+}
+
+.navbard a{
+    color: #FFF;
+    font-family: "Open Sans";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    text-decoration: none;
+    padding-right: 5%;
+    
+}

@@ -1,0 +1,19 @@
+
+.footer{
+    width: 100%;
+    text-align: center;
+    background-color: #151414;
+    color: #ffffff;
+    position: static;
+    padding: 1px 0; 
+}
+
+footer p{
+    font-family: "Open Sans";
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin: 1%;
+}
+

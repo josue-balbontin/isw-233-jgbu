@@ -60,9 +60,7 @@ display: flex;
 .presentacion__boton{
     justify-content: center;
     align-items: center;
-    border-radius: 0.875rem;
-    border: 1px solid rgba(0, 0, 0, 0.56);
-    background: #FFD700;
+
     width: 22%;
     height: 3rem;
 }

@@ -39,4 +39,4 @@ Chat de IA para resolver dudas y obtener sugerencias sobre el desarrollo del CV 
 
 * Sprint 2
 
-    [Chat](https://gemini.google.com/share/bd271764e3a7)
+    [Chat](https://gemini.google.com/share/3c34f50656e8)

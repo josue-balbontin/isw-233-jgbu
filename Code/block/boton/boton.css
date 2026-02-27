@@ -1,8 +1,6 @@
 .boton {
-    align-self: center;
+
     border-radius: 0.875rem;
-    padding: 1%;
-    width: 200px;
     text-align: center;
     font-size: 1rem;
     font-style: normal;
@@ -11,8 +9,17 @@
 }
 
 .boton--informacion{
-     border: 1px solid rgba(0, 0, 0, 0.56);
+    align-self: center;
+    width: 200px;
+    border: 1px solid rgba(0, 0, 0, 0.56);
     background: #4B4B4A;
     font-family: Assistant;
     color: #FFF;
+    padding: 1%;
+}
+
+.boton--principal{
+    border-radius: 0.875rem;
+    border: 1px solid rgba(0, 0, 0, 0.56);
+    background: #FFD700;
 }

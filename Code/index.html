@@ -6,6 +6,7 @@
     <title>Josue Balbontin CV</title>
     <link rel="stylesheet" href="index.css">
     <meta name="theme-color" content="#000000">
+    <script src="index.js" type="module" defer></script>
 
 </head>
 
@@ -20,146 +21,17 @@
     <!-- ARREGLAR TODO TIENE QUE SER CLASE EXPLISITA no tiene que haber h1 o h2 o h3 o etiquetas de esta manera  -->
 
     <!-- El componente es solo . la idea es que con su propio css se pueda renderizarse bien -->
-
-    <section class="presentacion">
-        <div class="presentacion__informacion">
-            <h1 class="presentacion__titulo">Ingeniero en Software</h1>
-            <h2>Josue Balbontin</h2>
-            <h3>Desarollador Full Stack</h3>
-            
-            <button class="boton boton--principal presentacion__boton"><p>Contáctame</p></button>
-        </div>
-
-        <div class="presentacion__imagenes">
-            <img class="presentacion__perfil" src="img/FotoPerfil.png" alt="Foto de perfil">
-            
-            <div class="presentacion__redes">
-                <a href="mailto:josuebalbontin@gmail.com" target="_blank" rel="noopener noreferrer" >
-                    <img src="img/gmail.svg" alt="Gmail">
-                </a>
-                <a href="https://www.linkedin.com/in/josue-galo-balbontin-ugarteche-50149436b/" target="_blank" rel="noopener noreferrer">
-                    <img src="img/linkedin.svg" alt="LinkedIn">
-                </a>
-                <a href="https://github.com/josue-balbontin" target="_blank" rel="noopener noreferrer">
-                    <img src="img/github.svg" alt="GitHub">
-                </a>
-            </div>
-        </div>
-    </section>
-
-
-
-    <section class="sobre-mi" id="sobre-mi">
-        <div class="sobre-mi__contenido">
-            <div>
-                <h1>Sobre Mí</h1>
-                <p>Estudiante de Ingeniería de Software en la UCB con enfoque en desarrollo Backend (Spring Boot) y Frontend (Angular). Con bases en C++ y C#, me motiva entender cómo funcionan las cosas desde la base. Fuera del código, soy curioso en temas variados, desde matemáticas hasta divulgación científica, y disfruto de los videojuegos.</p>
-            </div>
-            <button class="boton boton--informacion sobre-mi__boton">Descargar CV</button>
-        </div>
-       
-    </section>
     
+    <app-presentacion></app-presentacion>
+
+    <app-sobre-mi></app-sobre-mi>
     
-    <section class="experiencia">
-        <h1 id="proyectos">Proyectos Destacados</h1>
-        <div class="experiencia__lista">
-            <div class="experiencia__proyecto">
-                <div>
-                    <h2> Aplicación de Reserva de buses</h2>
-                    <p>Aplicación de gestión de flota de buses desarrollada en Python con arquitectura cliente-servidor. Implementa funcionalidades de reserva de pasajes, gestión administrativa completa (usuarios, buses, choferes, rutas), sistema de facturación con descuentos, y reportes de auditoría. El proyecto aplica buenas prácticas de bases de datos incluyendo indexación optimizada, triggers de auditoría, y gestión transaccional. Interfaz dual para administradores (CRUD completo) y clientes (reservas, historial, pagos).</p>
-                </div>
-                <img class="experiencia__imagen" src="img/pasa.png" alt="Captura de pantalla del Proyecto 1">
-            </div>
-            <div class="experiencia__proyecto">
-                <img class="experiencia__imagen" src="img/arqui.png" alt="Captura de pantalla del Proyecto 2">     
-                <div>
-                    <h2>Simulador de Arquitectura x86</h2>
-                    <p>Simulador de Arquitectura x86 desarrollado en Microsoft Excel y VBA. Implementa una arquitectura Von Neumann con pipeline de 5 etapas (IF, ID, EX, MEM, WB), detección de hazards y ejecución superpuesta. Simula una jerarquía de memoria completa (Registros, Caché multinivel con política LRU, RAM y Memoria Virtual) y soporta un conjunto de instrucciones x86-64 en sintaxis AT&T. Incluye un sistema de I/O gestionado por interrupciones y visualización en tiempo real del flujo de datos y estados del procesador.</p>
-                </div> 
-            </div>
-            <div class="experiencia__proyecto">
-                <div>
-                    <h2>Plataforma de ventas y gestion de tickets de eventos </h2>
-                    <p>Sistema integral de gestión de eventos y venta de entradas desarrollado con <strong>Java (Spring Boot)</strong> y <strong>Angular</strong>. Arquitectura N-Capas diseñada bajo principios <strong>SOLID</strong>, implementando patrones de diseño avanzados como <strong>Observer</strong> para el manejo de concurrencia en reservas temporales (bloqueo de asientos) , <strong>State</strong> para el ciclo de vida del ticket y <strong>Template Method</strong> para la estandarización de repositorios. Incluye validación de acceso mediante códigos QR, facturación dinámica y reportes de ventas en tiempo real.</p>
-                </div>
-                <img class="experiencia__imagen" src="img/tickets.png" alt="Captura de pantalla del Proyecto 3">
-            </div>
-            <button class="boton boton--informacion">Ver más proyectos</button>
-        </div>
-        
-    </section>
-
-    <section class="experiencia">
-        <h1 id="certificados">Certificados</h1>
-        <div class="experiencia__lista">
-            <div class="experiencia__proyecto">
-                <div>
-                    <h2>Computer Vision for Industrial Inspection</h2>
-                    <p>Implementación de pipelines de visión por computadora para la inspección visual automatizada, aplicando técnicas de Transfer Learning para mejorar la precisión en la identificación de fallas de manufactura.</p>
-                </div>
-                <img class="experiencia__imagen" src="img/inds_inspectionpng.png" alt="Captura de pantalla del Proyecto 1">
-            </div>
-            <div class="experiencia__proyecto">
-                <img class="experiencia__imagen" src="img/whitebelt.png" alt="Captura de pantalla del Proyecto 2">     
-                <div>
-                    <h2>Lean Six Sigma White Belt</h2>
-                    <p>Comprensión de los fundamentos de la metodología Lean Six Sigma y el marco DMAIC para la identificación de desperdicios, variabilidad y mejora de procesos operativos.</p>
-                </div> 
-            </div>
-            <div class="experiencia__proyecto">
-                <div>
-                    <h2>Google IA SUMMIT for Education</h2>
-                    <p>Participación en la conferencia internacional sobre la integración de la Inteligencia Artificial en entornos educativos, abordando el uso responsable, los desafíos éticos y estrategias sostenibles bajo la guía de Google Certified Trainers.</p>
-                </div>
-                <img class="experiencia__imagen" src="img/google.png" alt="Captura de pantalla del Proyecto 3">
-            </div>
-            <button class="boton boton--informacion">Ver más certificados</button>
-        </div>
-        
-    </section>
-
-    <section class="blog">
-        <h1 id="blog">Blog</h1>
-        <div class="blog__lista">
-            <div class="blog__proyecto">
-                  <img class="blog__imagen" src="img/iamed.webp" alt="Captura de pantalla del Proyecto 1">
-                <div>
-                    <h2>Perspectiva legal, ética y tecnológica de la IA en el área de salud. Basado en un enfoque mixto.</h2>
-                    <p>Artículo de investigación que analiza la integración de la <strong>Inteligencia Artificial en el sector salud</strong> mediante un enfoque metodológico mixto. Explora las implicaciones de esta tecnología desde una perspectiva tridimensional: <strong>tecnológica, legal y ética</strong>. El estudio evalúa el impacto de los algoritmos en el entorno clínico, los desafíos regulatorios frente a la privacidad de datos de los pacientes y propone lineamientos para una adopción responsable, equitativa y segura de la IA en la medicina.</p>
-                </div>
-              
-            </div>
-            <div class="blog__proyecto">
-                 <img  class="blog__imagen"  src="img/patrones.png" alt="Captura de pantalla del Proyecto 2">   
-                <div>
-                    <h2>Arquitectura Limpia: Resolviendo la Concurrencia con Patrones de Diseño</h2>
-                    <p>Análisis sobre la aplicación de principios de Arquitectura Limpia en sistemas transaccionales críticos. A través del diseño de un motor de reservas, exploro cómo la implementación estricta de <strong>SOLID</strong> y patrones como <strong>Observer</strong> y <strong>State</strong>  eliminan la deuda técnica en el manejo de concurrencia. El artículo discute la importancia de desacoplar la lógica de negocio de la infraestructura, permitiendo construir un backend en Spring Boot mantenible, testeable y escalable frente a reglas de negocio complejas como el bloqueo temporal de recursos.</p>
-                </div> 
-                   
-            </div>
-            <div class="blog__proyecto">
-                <img  class="blog__imagen"  src="img/x86.webp" alt="Captura de pantalla del Proyecto 3">
-                <div>
-                    <h2>Entendiendo la Máquina: Una Inmersión en el Pipeline y la Arquitectura x86</h2>
-                    <p>Desmitificando el procesador: una inmersión técnica en la emulación del ciclo de instrucción y la arquitectura <strong>Von Neumann</strong>. Este post detalla los desafíos de simular un pipeline de 5 etapas (Fetch, Decode, Execute, Memory, WriteBack) y la resolución de conflictos de datos (<em>hazards</em>) en tiempo real. Se reflexiona sobre cómo comprender la jerarquía de memoria y el manejo de registros es crucial para cualquier ingeniero de software que busque escribir código optimizado, eficiente y consciente del hardware subyacente.</p>
-                </div>
-                
-            </div>
-        
-        </div>
-        <button class="boton boton--informacion">Ver Blog</button>
-    </section>
-  
-
-
-
+    <app-experiencia></app-experiencia>
     
-
-
+    <app-blog></app-blog>
 
     <footer class="footer">
-    <p>Josue Balbontin 2026</p>
+        <p>Josue Balbontin 2026</p>
     </footer>
 
 </body>

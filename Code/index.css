@@ -1,11 +1,11 @@
 @import './vendor/externs.css';
 @import './blocks/blog/blog.css';
 @import './blocks/boton/boton.css';
-@import './blocks/experiencia/experiencia.css';
+@import './blocks/home/experiencia/experiencia.css';
 @import './blocks/footer/footer.css';
 @import './blocks/navbard/navbard.css';
-@import './blocks/presentacion/presentacion.css';
-@import './blocks/sobre-mi/sobre-mi.css';
+@import './blocks/home/presentacion/presentacion.css';
+@import './blocks/home/sobre-mi/sobre-mi.css';
 
 
 body {
@@ -14,17 +14,12 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Open Sans", sans-serif;
-
 }
 
-
-
-
-
-
-
-
-
+#main{
+    display: block;
+    padding-top: 20px;
+}
 
 
 

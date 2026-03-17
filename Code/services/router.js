@@ -1,3 +1,4 @@
+
 const router = {
     enrutar(){
         document.querySelectorAll("a.nav__link").forEach((a) => {
@@ -18,8 +19,26 @@ const router = {
             history.pushState({ route }, "", route);
         }
 
+        switch(route){
+            case "/about":
+                document.getElementById("main").innerHTML = "<h1>about</h1>";
+            break;
+            case "/proyectos":
+                document.getElementById("main").innerHTML = "<h1>proyectos</h1>";
+            break;
+            case "/blog":
+                document.getElementById("main").innerHTML = "<h1>blog</h1>";
+            break;
+            case "/contacto":
+                document.getElementById("main").innerHTML = "<h1>contacto</h1>";
+            break;
+            
+            
+            default:
+                document.getElementById("main").innerHTML = "<app-home></app-home>";
+        }
+
        
-        alert(`Navegando a ${route}`);
     },
 }
 

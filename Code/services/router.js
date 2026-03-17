@@ -24,13 +24,13 @@ const router = {
                 document.getElementById("main").innerHTML = "<page-about></page-about>";
             break;
             case "/proyectos":
-                document.getElementById("main").innerHTML = "<h1>proyectos</h1>";
+                document.getElementById("main").innerHTML = "<page-proyecto></page-proyecto>";
             break;
             case "/blog":
-                document.getElementById("main").innerHTML = "<h1>blog</h1>";
+                document.getElementById("main").innerHTML = "<page-blog></page-blog>";
             break;
             case "/contacto":
-                document.getElementById("main").innerHTML = "<h1>contacto</h1>";
+                document.getElementById("main").innerHTML = "<page-contacto></page-contacto>";
             break;
             
             

@@ -21,7 +21,7 @@ const router = {
 
         switch(route){
             case "/about":
-                document.getElementById("main").innerHTML = "<h1>about</h1>";
+                document.getElementById("main").innerHTML = "<page-about></page-about>";
             break;
             case "/proyectos":
                 document.getElementById("main").innerHTML = "<h1>proyectos</h1>";

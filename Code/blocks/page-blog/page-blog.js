@@ -11,6 +11,19 @@ export class PageBlog extends HTMLElement {
 
     crearHTML(){
         this.shadow.innerHTML = html;
+        
+        const style = document.createElement("style");
+  
+        fetch ('/blocks/page-blog/page-blog.css').then(
+            response => response.text().then(
+                css => style.innerHTML = css
+            )
+        );
+
+        this.shadow.appendChild(style);
+
+     
+
     }
 
 }

@@ -10,6 +10,7 @@ import { PageBlog } from "./blocks/page-blog/page-blog.js";
 import { PageContacto } from "./blocks/page-contacto/page-contacto.js";
 
 
+
 addEventListener("DOMContentLoaded", () => {
 
     router.enrutar(); 

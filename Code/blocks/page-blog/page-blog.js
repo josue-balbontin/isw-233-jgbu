@@ -1,5 +1,15 @@
 
-const html = `<h1>hola blog</h1>`;
+const html = 
+` 
+    <section class = "page-block">
+        <h1>Blog </h1>
+        
+        <div class= "page-block-buscador">
+            <input type="text" placeholder="Buscar blog"><button>categoria</button>
+        </div>
+    
+    </section>
+`;
 
 
 export class PageBlog extends HTMLElement {

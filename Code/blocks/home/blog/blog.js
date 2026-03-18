@@ -21,7 +21,7 @@ const html =/*html*/`
                 </app-tarjeta>
 
                 <app-tarjeta>
-                    <img slot="imagen" src="img/x86.webp">
+                    <img slot="imagen" src="img/x86.webp" >
                     <div slot="contenido">
                         <h2>Entendiendo la Máquina: Una Inmersión en el Pipeline y la Arquitectura x86</h2>
                         <p>Este trabajo desmitifica el procesador a través de una inmersión técnica en la emulación del ciclo de instrucción y la arquitectura <strong>Von Neumann</strong>. Presento los desafíos de simular un pipeline de 5 etapas (Fetch, Decode, Execute, Memory, WriteBack) y la resolución de <em>hazards</em> en tiempo real. Se reflexiona sobre cómo comprender la jerarquía de memoria y el manejo de registros resulta esencial para cualquier ingeniero de software que aspire a escribir código optimizado, eficiente y consciente del hardware subyacente.</p>

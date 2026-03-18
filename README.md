@@ -57,4 +57,4 @@ Chat de IA para resolver dudas y obtener sugerencias sobre el desarrollo del CV 
 
     [Chat](https://gemini.google.com/share/d7bcf63d1078)
 
-    
+    [Chat](https://gemini.google.com/share/56cef97f64cd)

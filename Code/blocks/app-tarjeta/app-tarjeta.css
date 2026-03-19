@@ -1,28 +1,54 @@
-:host{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    padding-bottom: 1%;
+
+:host {
+    display: block; 
     flex: 1 1 0;
     max-width: 30%;
+    padding-bottom: 1%;
 }
 
 
-::slotted([slot="imagen"]){
+.tarjeta {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    gap: 20px;
+    height: 100%;
+}
+
+
+.tarjeta__imagen {
+    width: 100%;
+    
+}
+
+
+::slotted([slot="imagen"]) {
     width: 100%;
     aspect-ratio: 1;
     object-fit: cover;
     border-radius: 10px;
+    display: block; 
 }
 
-.tarjeta-contenido{
+
+:host([direccion="horizontal"]) .tarjeta {
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+:host([direccion="horizontal-reversa"]) .tarjeta {
+    flex-direction: row-reverse;
+    align-items: flex-start;
+}
+
+.tarjeta__contenido {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     gap: 15px;
+    width: 100%; 
 }
 
-.acciones{
+.acciones {
     margin-top: auto; 
 }

@@ -1,11 +1,11 @@
 
 const html =/*html*/`
     <article class = "tarjeta">
-        <div class= "tarjeta-imagen">
+        <div class= "tarjeta__imagen">
             <slot name="imagen"></slot>
         </div>
         
-        <div class= "tarjeta-contenido">
+        <div class= "tarjeta__contenido">
             <slot name= "contenido"></slot>
 
             <div class="acciones">

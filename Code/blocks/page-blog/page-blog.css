@@ -1,0 +1,18 @@
+
+.page-blog {
+    margin: 5%;
+}
+
+.page-blog__titulo{
+     font-family: "Sans Serif Collection";
+    color: rgba(255, 215, 0, 0.95);
+}
+
+
+.page-blog__buscador{
+    display: flex;
+    justify-content: center;
+    padding: 3%;
+    
+    
+}

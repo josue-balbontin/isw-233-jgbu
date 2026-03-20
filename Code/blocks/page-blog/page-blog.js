@@ -1,15 +1,17 @@
 import { ApiBase } from "../../services/api/ApiBase.js";
 import { AppGrilla } from "../app-grilla/app-grilla.js";
 import { AppTarjeta } from "../app-tarjeta/app-tarjeta.js";
-import { tarjetaHorizontal, tarjetaVerticalFavorito } from "../../services/tarjetaFactory.js";
+import { tarjetaHorizontal, tarjetaVertical, tarjetaVerticalFavorito } from "../../services/tarjetaFactory.js";
 
 const html = /*html*/` 
     <section class = "page-blog">
-        <h1>Blog </h1>
+        <h1 class="page-blog__titulo">Blog </h1>
         
         <div class= "page-blog__buscador">
-            <input type="text" placeholder="Buscar blog"><button>categoria</button>
+            <input type="text" placeholder="Buscar blog" class="page-blog__input-buscar"><button class="page-blog__boton-categoria">categoria</button>
+            <button class="page-blog__boton-buscar">Buscar</button>
         </div>
+        
 
         <app-grilla columnas="3"></app-grilla>
         
@@ -35,7 +37,7 @@ export class PageBlog extends HTMLElement {
         const blogData = await this.obtener();
                 
         const tarjetasHTML = blogData.map(element => {
-            return tarjetaVerticalFavorito.crearTarjeta(element);
+            return tarjetaVertical.crearTarjeta(element);
         }).join('');
     
         this.shadow.querySelector('app-grilla').innerHTML = tarjetasHTML;

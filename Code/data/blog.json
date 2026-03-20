@@ -1,0 +1,166 @@
+[
+    {
+        "id": 1,
+        "titulo": "Perspectiva legal, ética y tecnológica de la IA en el área de salud. Basado en un enfoque mixto.",
+        "descripcion": "Este artículo de investigación analiza cómo la <strong>Inteligencia Artificial se integra en el sector salud</strong> a través de un enfoque metodológico mixto. El trabajo aborda las implicaciones de esta tecnología desde tres dimensiones: <strong>tecnológica, legal y ética</strong>. Se evalúa el impacto de los algoritmos en la práctica clínica, los retos regulatorios relacionados con la privacidad de los datos de los pacientes y se plantean lineamientos para una adopción responsable, equitativa y segura de la IA en la medicina.", 
+        "categoria": "salud",
+        "imagen" : "./img/iamed.webp"
+
+    },
+
+    {
+        "id": 2,
+        "titulo": "Arquitectura Limpia: Resolviendo la Concurrencia con Patrones de Diseño",
+        "descripcion": "Este análisis aborda la aplicación de principios de <strong>Arquitectura Limpia</strong> en sistemas transaccionales críticos. A partir del diseño de un motor de reservas, muestro cómo la implementación rigurosa de <strong>SOLID</strong> y patrones como <strong>Observer</strong> y <strong>State</strong> ayudan a eliminar la deuda técnica en el manejo de concurrencia. Se discute la relevancia de desacoplar la lógica de negocio de la infraestructura, lo que permite construir un backend en Spring Boot mantenible, testeable y escalable frente a reglas de negocio complejas, como el bloqueo temporal de recursos.",
+        "categoria": "tecnología",
+        "imagen" : "./img/patrones.png"
+    },
+
+    {
+        "id": 3,
+        "titulo": "Entendiendo la Máquina: Una Inmersión en el Pipeline y la Arquitectura x86",
+        "descripcion": "Este trabajo desmitifica el procesador a través de una inmersión técnica en la emulación del ciclo de instrucción y la arquitectura <strong>Von Neumann</strong>. Presento los desafíos de simular un pipeline de 5 etapas (Fetch, Decode, Execute, Memory, WriteBack) y la resolución de <em>hazards</em> en tiempo real. Se reflexiona sobre cómo comprender la jerarquía de memoria y el manejo de registros resulta esencial para cualquier ingeniero de software que aspire a escribir código optimizado, eficiente y consciente del hardware subyacente.",
+        "categoria": "arquitectura",
+        "imagen" : "./img/x86.webp"
+    },
+
+    {
+        "id": 4,
+        "titulo": "IA explicable en diagnóstico clínico: transparencia y confianza",
+        "descripcion": "Exploro técnicas de <strong>IA explicable (XAI)</strong> aplicadas al diagnóstico clínico, su impacto en la toma de decisiones médicas y cómo balancear precisión con interpretabilidad para ganar la confianza de profesionales de la salud.",
+        "categoria": "salud"
+    },
+
+    {
+        "id": 5,
+        "titulo": "DataOps y calidad de datos para análisis en tiempo real",
+        "descripcion": "Una guía práctica sobre cómo implementar pipelines robustos de <strong>DataOps</strong>, validación de esquemas y pruebas automatizadas para asegurar la calidad de datos en sistemas analíticos en tiempo real.",
+        "categoria": "data"
+    },
+
+    {
+        "id": 6,
+        "titulo": "Robótica colaborativa: seguridad y control en entornos industriales",
+        "descripcion": "Analizo arquitecturas de control y medidas de seguridad para robots colaborativos (cobots), considerando sensores, certificaciones y estrategias para minimizar riesgos en el trabajo humano-robot.",
+        "categoria": "robótica"
+    },
+
+    {
+        "id": 7,
+        "titulo": "Privacidad diferencial: protección de datos en investigación médica",
+        "descripcion": "Presento conceptos de <strong>privacidad diferencial</strong> y cómo aplicarlos para compartir conjuntos de datos médicos respetando la confidencialidad de los pacientes y las regulaciones vigentes.",
+        "categoria": "privacidad"
+    },
+
+    {
+        "id": 8,
+        "titulo": "Microservicios y gestión de transacciones distribuidas",
+        "descripcion": "Discuto patrones para coordinar transacciones en arquitecturas de microservicios, incluidas sagas y compensaciones, con ejemplos prácticos y trade-offs.",
+        "categoria": "arquitectura"
+    },
+
+    {
+        "id": 9,
+        "titulo": "Visualización para ciencia de datos: mejores prácticas",
+        "descripcion": "Revisamos librerías y principios de visualización para comunicar hallazgos de forma efectiva: selección de gráficas, colores accesibles y storytelling visual.",
+        "categoria": "data"
+    },
+
+    {
+        "id": 10,
+        "titulo": "Seguridad en la nube: modelos de responsabilidad compartida",
+        "descripcion": "Se explica el modelo de responsabilidad compartida en proveedores cloud, junto a controles recomendados para IAM, cifrado y gobernanza.",
+        "categoria": "cloud"
+    },
+
+    {
+        "id": 11,
+        "titulo": "Optimización de consultas en bases de datos relacionales",
+        "descripcion": "Consejos sobre indexación, análisis de planes de ejecución y refactorización de consultas SQL para mejorar el rendimiento en sistemas con alta carga.",
+        "categoria": "bases de datos"
+    },
+
+    {
+        "id": 12,
+        "titulo": "Desarrollo móvil multiplataforma: elecciones y rendimiento",
+        "descripcion": "Comparo frameworks multiplataforma y técnicas para optimizar el rendimiento, consumo de batería y experiencia de usuario en apps móviles modernas.",
+        "categoria": "mobile"
+    },
+
+    {
+        "id": 13,
+        "titulo": "Algoritmos probabilísticos para sistemas recomendadores",
+        "descripcion": "Exploro modelos colaborativos y basados en contenido, con un enfoque en métodos probabilísticos que mejoran la personalización y la robustez ante ruido.",
+        "categoria": "algoritmos"
+    },
+
+    {
+        "id": 14,
+        "titulo": "UX y diseño centrado en la accesibilidad",
+        "descripcion": "Guía práctica para diseñar interfaces inclusivas, con ejemplos de buenas prácticas ARIA, contraste de color y navegación por teclado.",
+        "categoria": "diseño"
+    },
+
+    {
+        "id": 15,
+        "titulo": "DevOps y CI/CD: automatización confiable",
+        "descripcion": "Cómo estructurar pipelines CI/CD seguros y reproducibles, incluyendo pruebas automatizadas, despliegues blue/green y gestión de secretos.",
+        "categoria": "devops"
+    },
+
+    {
+        "id": 16,
+        "titulo": "Testing automatizado para APIs RESTful",
+        "descripcion": "Estrategias para diseñar suites de pruebas para APIs: pruebas contractuales, mocks, tests de integración y generación de datos de prueba.",
+        "categoria": "testing"
+    },
+
+    {
+        "id": 17,
+        "titulo": "Ética y responsabilidad en el diseño de productos digitales",
+        "descripcion": "Reflexiono sobre decisiones de diseño que afectan la privacidad, la equidad y el bienestar del usuario, proponiendo marcos para evaluar impactos éticos.",
+        "categoria": "ética"
+    },
+
+    {
+        "id": 18,
+        "titulo": "Emprendimiento tecnológico: validación rápida de hipótesis",
+        "descripcion": "Métodos para validar ideas de producto con mínimo esfuerzo (MVP), métricas clave y estrategias para iterar con usuarios reales.",
+        "categoria": "emprendimiento"
+    },
+
+    {
+        "id": 19,
+        "titulo": "Redes definidas por software: conceptos y casos de uso",
+        "descripcion": "Introducción a SDN, ventajas frente a redes tradicionales y ejemplos de cómo simplifica la orquestación y la segmentación de tráfico.",
+        "categoria": "redes"
+    },
+
+    {
+        "id": 20,
+        "titulo": "Seguridad informática: detección temprana de intrusiones",
+        "descripcion": "Técnicas de monitoreo, detección de anomalías y uso de SIEM para identificar comportamientos maliciosos antes de que escalen.",
+        "categoria": "seguridad"
+    },
+
+    {
+        "id": 21,
+        "titulo": "Interfaces conversacionales: diseño de chatbots efectivos",
+        "descripcion": "Buenas prácticas en diseño de diálogos, manejo de errores y escalamiento a agentes humanos para experiencias conversacionales naturales.",
+        "categoria": "IA"
+    },
+
+    {
+        "id": 22,
+        "titulo": "Computación cuántica: ¿qué deben saber los desarrolladores?",
+        "descripcion": "Resumen accesible de conceptos claves en computación cuántica, su estado actual y ejemplos de problemas donde puede aportar ventaja.",
+        "categoria": "tecnología"
+    },
+
+    {
+        "id": 23,
+        "titulo": "Arquitectura hexagonal aplicada a proyectos web",
+        "descripcion": "Explico cómo aplicar la arquitectura hexagonal para desacoplar la lógica de negocio de frameworks y facilitar pruebas e integración continua.",
+        "categoria": "arquitectura"
+    }
+]

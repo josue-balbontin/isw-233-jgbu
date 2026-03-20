@@ -3,6 +3,8 @@ import { AppGrilla } from "../app-grilla/app-grilla.js";
 import { AppTarjeta } from "../app-tarjeta/app-tarjeta.js";
 import { tarjetaHorizontal, tarjetaVertical, tarjetaVerticalFavorito } from "../../services/tarjetaFactory.js";
 
+import { Buscadorinput } from "../../services/buscadorInput.js";
+
 const html = /*html*/` 
     <section class = "page-blog">
         <h1 class="page-blog__titulo">Blog </h1>
@@ -34,6 +36,14 @@ export class PageBlog extends HTMLElement {
         this.crearHTML();
     
         
+        this.imprimirDatos(); 
+
+        Buscadorinput.detectarCambio(this.shadow.querySelector('.page-blog__input-buscar') , this.shadow.querySelector('.page-blog__boton-buscar') );
+            
+        
+    }
+
+    async imprimirDatos(){
         const blogData = await this.obtener();
                 
         const tarjetasHTML = blogData.map(element => {
@@ -41,8 +51,6 @@ export class PageBlog extends HTMLElement {
         }).join('');
     
         this.shadow.querySelector('app-grilla').innerHTML = tarjetasHTML;
-            
-        
     }
 
 
@@ -59,9 +67,10 @@ export class PageBlog extends HTMLElement {
 
         this.shadow.appendChild(style);
 
-     
-
     }
+
+
+
 
 }
 

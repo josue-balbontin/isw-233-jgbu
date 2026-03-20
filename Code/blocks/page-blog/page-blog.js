@@ -1,7 +1,7 @@
 import { ApiBase } from "../../services/api/ApiBase.js";
 import { AppGrilla } from "../app-grilla/app-grilla.js";
 import { AppTarjeta } from "../app-tarjeta/app-tarjeta.js";
-import { tarjetaVerticalFavorito } from "../../services/tarjetaFactory.js";
+import { tarjetaHorizontal, tarjetaVerticalFavorito } from "../../services/tarjetaFactory.js";
 
 const html = /*html*/` 
     <section class = "page-blog">
@@ -11,7 +11,7 @@ const html = /*html*/`
             <input type="text" placeholder="Buscar blog"><button>categoria</button>
         </div>
 
-        <app-grilla></app-grilla>
+        <app-grilla columnas="3"></app-grilla>
         
     
     </section>

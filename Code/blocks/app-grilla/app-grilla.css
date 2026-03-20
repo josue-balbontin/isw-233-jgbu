@@ -1,11 +1,12 @@
 :host {
     display: block;
     width: 100%;
+    --num-columnas: auto-fit; 
 }
 
 .grilla {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(var(--num-columnas), minmax(300px, 1fr));
     gap: 20px;
     width: 100%;
 }

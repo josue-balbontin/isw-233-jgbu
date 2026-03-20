@@ -20,7 +20,7 @@ class tarjeta{
 export class tarjetaVertical extends tarjeta{
     static crearTarjeta(datos){
         return /*html*/`
-          <app-tarjeta>
+          <app-tarjeta id="${datos.id}" >
             ${this.generarContenidoInterno(datos)}
           </app-tarjeta>
         `
@@ -35,7 +35,7 @@ export class tarjetaVertical extends tarjeta{
 export class tarjetaHorizontal extends tarjeta{
     static crearTarjeta(datos){
         return /*html*/`
-            <app-tarjeta direccion="horizontal">
+            <app-tarjeta direccion="horizontal" id="${datos.id}">
                   ${this.generarContenidoInterno(datos)} 
             </app-tarjeta>
         `
@@ -48,7 +48,7 @@ export class tarjetaHorizontal extends tarjeta{
 export class tarjetaHorizontalReversa extends tarjeta{
     static crearTarjeta(datos){
         return /*html*/`
-            <app-tarjeta direccion="horizontal-reversa">
+            <app-tarjeta direccion="horizontal-reversa" id="${datos.id}">
                  ${this.generarContenidoInterno(datos)}
             </app-tarjeta>
         `
@@ -61,11 +61,11 @@ export class tarjetaHorizontalReversa extends tarjeta{
 export class tarjetaVerticalFavorito extends tarjeta{
     static crearTarjeta(datos , classfavorito){
         return /*html*/`
-            <app-tarjeta>
+            <app-tarjeta id="${datos.id}">
                 ${this.generarContenidoInterno(datos)}
 
                 <div slot="acciones">
-                    <button class="${classfavorito}" id="${datos.id}">Favorito</button>
+                    <button class="${classfavorito}" >Favorito</button>
                 </div>
 
             </app-tarjeta>

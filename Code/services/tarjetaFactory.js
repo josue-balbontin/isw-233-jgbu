@@ -56,3 +56,22 @@ export class tarjetaHorizontalReversa extends tarjeta{
     }
 
 }
+
+
+export class tarjetaVerticalFavorito extends tarjeta{
+    static crearTarjeta(datos , classfavorito){
+        return /*html*/`
+            <app-tarjeta>
+                ${this.generarContenidoInterno(datos)}
+
+                <div slot="acciones">
+                    <button class="${classfavorito}" id="${datos.id}">Favorito</button>
+                </div>
+
+            </app-tarjeta>
+
+        `
+    }
+
+
+}

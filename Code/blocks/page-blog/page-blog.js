@@ -1,10 +1,10 @@
 
 const html = 
 ` 
-    <section class = "page-block">
+    <section class = "page-blog">
         <h1>Blog </h1>
         
-        <div class= "page-block-buscador">
+        <div class= "page-blog__buscador">
             <input type="text" placeholder="Buscar blog"><button>categoria</button>
         </div>
     

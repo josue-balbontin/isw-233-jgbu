@@ -1,6 +1,6 @@
 export const  ApiBase = {
     
-    async obtenerBlog(){
+    async obtener(){
         try{
             const respuesta = await fetch(this.url);
 

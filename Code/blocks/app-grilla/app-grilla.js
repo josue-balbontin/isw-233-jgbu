@@ -7,7 +7,7 @@ const html = /*html*/`
 `; 
 
 
-class AppGrilla extends HTMLElement{
+export class AppGrilla extends HTMLElement{
     constructor(){
         super(); 
         this.DOM = this.attachShadow({mode : "open"});
@@ -19,7 +19,7 @@ class AppGrilla extends HTMLElement{
 
         const style = document.createElement("style"); 
 
-        fetch().then(
+        fetch('/blocks/app-grilla/app-grilla.css').then(
             respuesta => respuesta.text().then(
                 estilo => style.innerHTML = estilo
             )

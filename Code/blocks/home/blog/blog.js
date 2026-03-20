@@ -27,7 +27,7 @@ export class Blog extends HTMLElement {
         this.crearBlog();
 
     
-        const blogData = await this.obtenerBlog();
+        const blogData = await this.obtener();
             
         const tarjetasHTML = blogData.slice(0, 3).map(element => {
             return tarjetaVertical.crearTarjeta(element);

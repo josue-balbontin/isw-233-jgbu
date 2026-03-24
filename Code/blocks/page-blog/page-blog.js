@@ -122,9 +122,9 @@ export class PageBlog extends HTMLElement {
 
             if(blogCategorias.hidden == false){
                
-                this.categoriasvalores.forEach(elemento =>{
-                    blogCategorias.innerHTML += `<p>${elemento}</p>`;
-                });
+                blogCategorias.innerHTML  = this.categoriasvalores.map(elemento =>{
+                     return `<p>${elemento}</p>`;
+                }).join('');
 
 
                 

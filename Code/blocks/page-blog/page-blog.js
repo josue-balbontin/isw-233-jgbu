@@ -4,15 +4,24 @@ import { AppTarjeta } from "../app-tarjeta/app-tarjeta.js";
 import { tarjetaHorizontal, tarjetaVertical, tarjetaVerticalFavorito } from "../../services/tarjetaFactory.js";
 
 import { Buscadorinput } from "../../services/buscadorInput.js";
+import { Filtro } from "../../services/Filtro.js";
 
 const html = /*html*/` 
     <section class = "page-blog">
         <h1 class="page-blog__titulo">Blog </h1>
         
         <div class= "page-blog__buscador">
-            <input type="text" placeholder="Buscar blog" class="page-blog__input-buscar"><button class="page-blog__boton-categoria">categoria</button>
-            <button class="page-blog__boton-buscar">Buscar</button>
+            <div>
+                <input type="text" placeholder="Buscar blog" class="page-blog__input-buscar"><button class="page-blog__boton-categoria">categoria</button>
+                <button class="page-blog__boton-buscar">Buscar</button>
+            </div>
+
+            <div class="page-blog__categorias" hidden >
+            </div>
+        
         </div>
+
+
         
 
         <app-grilla columnas="3"></app-grilla>
@@ -27,6 +36,10 @@ export class PageBlog extends HTMLElement {
         super(); 
         this.shadow = this.attachShadow({mode : "open"});
         
+        this.datos = [];
+        this.datosFiltrados = [];
+        this.categoriasvalores = [];
+        
         this.url = './data/blog.json';
         
     }
@@ -35,24 +48,14 @@ export class PageBlog extends HTMLElement {
             
         this.crearHTML();
     
-        
-        this.imprimirDatos(); 
+        await this.cargarDatos(); 
 
-        Buscadorinput.detectarCambio(this.shadow.querySelector('.page-blog__input-buscar') , this.shadow.querySelector('.page-blog__boton-buscar') );
-            
-        
+        this.imprimirDatos(this.datos);
+ 
+        this.buscador(); 
+
+        this.categorias(); 
     }
-
-    async imprimirDatos(){
-        const blogData = await this.obtener();
-                
-        const tarjetasHTML = blogData.map(element => {
-            return tarjetaVertical.crearTarjeta(element);
-        }).join('');
-    
-        this.shadow.querySelector('app-grilla').innerHTML = tarjetasHTML;
-    }
-
 
     crearHTML(){
         this.shadow.innerHTML = html;
@@ -70,6 +73,72 @@ export class PageBlog extends HTMLElement {
     }
 
 
+    async cargarDatos(){
+        this.datos = await this.obtener();
+        
+        this.categoriasvalores = Filtro.obtenerValoresUnicos(this.datos , "categoria");
+        
+    }
+
+    imprimirDatos(datos){
+        
+        const tarjetasHTML = datos.map(
+                e =>{
+                    return tarjetaVertical.crearTarjeta(e);
+                } 
+        ).join('');
+
+        this.shadow.querySelector('app-grilla').innerHTML = tarjetasHTML;
+
+    }
+
+    buscador(){
+        const input = this.shadow.querySelector('.page-blog__input-buscar');
+        const boton = this.shadow.querySelector('.page-blog__boton-buscar');
+        
+        Buscadorinput.detectarCambio( input , boton , (texto) =>{
+            this.datosFiltrados = Filtro.filtrar(this.datos, 'titulo', texto );
+
+            if(texto === ''){
+                this.datosFiltrados = this.datos;
+            }
+
+            this.imprimirDatos(this.datosFiltrados);
+
+        });
+
+    }
+
+
+    categorias(){
+        const botonCategoria = this.shadow.querySelector('.page-blog__boton-categoria');
+        const blogCategorias = this.shadow.querySelector('.page-blog__categorias')
+
+        botonCategoria.addEventListener('click', () => {
+            blogCategorias.hidden = !blogCategorias.hidden; 
+
+            if(blogCategorias.hidden == false){
+               
+                this.categoriasvalores.forEach(elemento =>{
+                    blogCategorias.innerHTML += `<p>${elemento}</p>`;
+                });
+
+
+                
+            }
+            else{
+                blogCategorias.innerHTML = ""; 
+            }
+
+            
+        })
+
+
+
+    }
+
+
+    
 
 
 }

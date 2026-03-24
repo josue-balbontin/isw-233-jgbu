@@ -133,6 +133,10 @@ export class PageBlog extends HTMLElement {
             
         })
 
+        blogCategorias.addEventListener('click' ,   (event)=> {
+            console.log(event.target); 
+        })
+
 
 
     }

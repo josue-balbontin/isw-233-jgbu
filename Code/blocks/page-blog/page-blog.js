@@ -16,13 +16,10 @@ const html = /*html*/`
                 <button class="page-blog__boton-buscar">Buscar</button>
             </div>
 
-            <div class="page-blog__categorias" hidden >
+            <div class="page-blog__categorias page-blog__categorias--oculto " >
             </div>
         
         </div>
-
-
-        
 
         <app-grilla columnas="3"></app-grilla>
         
@@ -52,6 +49,8 @@ export class PageBlog extends HTMLElement {
         this.crearHTML();
     
         await this.cargarDatos(); 
+
+        this.inicializarCategorias(); 
 
         this.imprimirDatos(this.datos);
  
@@ -83,11 +82,22 @@ export class PageBlog extends HTMLElement {
         
     }
 
+    inicializarCategorias(){
+        const blogCategorias = this.shadow.querySelector('.page-blog__categorias')
+
+        const opcionesHTML = this.categoriasvalores.map(elemento =>{
+                     return `<p>${elemento}</p>`;
+        }).join('');
+
+        blogCategorias.innerHTML = `<p>Todos</p>` + opcionesHTML;
+
+    }
+
     imprimirDatos(datos){
         
         const tarjetasHTML = datos.map(
-                e =>{
-                    return tarjetaVerticalFavorito.crearTarjeta(e);
+                dato =>{
+                    return tarjetaVerticalFavorito.crearTarjeta(dato);
                 } 
         ).join('');
 
@@ -118,30 +128,22 @@ export class PageBlog extends HTMLElement {
         const blogCategorias = this.shadow.querySelector('.page-blog__categorias')
 
         botonCategoria.addEventListener('click', () => {
-            blogCategorias.hidden = !blogCategorias.hidden; 
 
-            if(blogCategorias.hidden == false){
-               
-                blogCategorias.innerHTML  = this.categoriasvalores.map(elemento =>{
-                     return `<p>${elemento}</p>`;
-                }).join('');
+            blogCategorias.classList.toggle('page-blog__categorias--oculto');
 
-
-                
-            }
-            else{
-                blogCategorias.innerHTML = ""; 
-            }
-
-            
         })
 
         blogCategorias.addEventListener('click' ,   (event)=> {
             if(event.target.matches('p')){
                 const categoria =event.target.textContent;
+                
+                if(categoria === 'Todos'){
+                    this.datosFiltrados = this.datos;
+                    this.imprimirDatos(this.datosFiltrados);
+                    return;
+                }
 
                 this.datosFiltrados = Filtro.filtrar(this.datos , this.datosCategoria , categoria );
-                
                 this.imprimirDatos(this.datosFiltrados); 
 
             }

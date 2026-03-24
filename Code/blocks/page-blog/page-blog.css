@@ -43,3 +43,7 @@
     margin: 0;
     
 }
+
+.page-blog__categorias--oculto {
+    display: none !important;
+}

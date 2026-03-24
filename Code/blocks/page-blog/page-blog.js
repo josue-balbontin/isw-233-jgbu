@@ -39,6 +39,9 @@ export class PageBlog extends HTMLElement {
         this.datos = [];
         this.datosFiltrados = [];
         this.categoriasvalores = [];
+
+        this.datosTitulo = "titulo";
+        this.datosCategoria="categoria"; 
         
         this.url = './data/blog.json';
         
@@ -76,7 +79,7 @@ export class PageBlog extends HTMLElement {
     async cargarDatos(){
         this.datos = await this.obtener();
         
-        this.categoriasvalores = Filtro.obtenerValoresUnicos(this.datos , "categoria");
+        this.categoriasvalores = Filtro.obtenerValoresUnicos(this.datos , this.datosCategoria);
         
     }
 
@@ -84,7 +87,7 @@ export class PageBlog extends HTMLElement {
         
         const tarjetasHTML = datos.map(
                 e =>{
-                    return tarjetaVertical.crearTarjeta(e);
+                    return tarjetaVerticalFavorito.crearTarjeta(e);
                 } 
         ).join('');
 
@@ -97,7 +100,7 @@ export class PageBlog extends HTMLElement {
         const boton = this.shadow.querySelector('.page-blog__boton-buscar');
         
         Buscadorinput.detectarCambio( input , boton , (texto) =>{
-            this.datosFiltrados = Filtro.filtrar(this.datos, 'titulo', texto );
+            this.datosFiltrados = Filtro.filtrar(this.datos, this.datosTitulo, texto );
 
             if(texto === ''){
                 this.datosFiltrados = this.datos;
@@ -134,7 +137,16 @@ export class PageBlog extends HTMLElement {
         })
 
         blogCategorias.addEventListener('click' ,   (event)=> {
-            console.log(event.target); 
+            if(event.target.matches('p')){
+                const categoria =event.target.textContent;
+
+                this.datosFiltrados = Filtro.filtrar(this.datos , this.datosCategoria , categoria );
+                
+                this.imprimirDatos(this.datosFiltrados); 
+
+            }
+
+           
         })
 
 

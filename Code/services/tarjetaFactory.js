@@ -65,7 +65,7 @@ export class tarjetaVerticalFavorito extends tarjeta{
                 ${this.generarContenidoInterno(datos)}
 
                 <div slot="acciones">
-                    <button class="${classfavorito}" >Favorito</button>
+                    <button class="${classfavorito}" ></button>
                 </div>
 
             </app-tarjeta>

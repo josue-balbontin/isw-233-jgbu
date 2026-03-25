@@ -97,7 +97,7 @@ export class PageBlog extends HTMLElement {
         
         const tarjetasHTML = datos.map(
                 dato =>{
-                    return tarjetaVerticalFavorito.crearTarjeta(dato);
+                    return tarjetaVerticalFavorito.crearTarjeta(dato , "page-blog__favorito--no-favorito");
                 } 
         ).join('');
 

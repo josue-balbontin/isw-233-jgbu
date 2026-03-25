@@ -5,6 +5,7 @@ import { tarjetaHorizontal, tarjetaVertical, tarjetaVerticalFavorito } from "../
 
 import { Buscadorinput } from "../../services/buscadorInput.js";
 import { Filtro } from "../../services/Filtro.js";
+import { blogFavoritos } from "../../services/BlogFavoritos.js";
 
 const html = /*html*/` 
     <section class = "page-blog">
@@ -57,6 +58,8 @@ export class PageBlog extends HTMLElement {
         this.buscador(); 
 
         this.categorias(); 
+
+        this.inicializarFavoritos(); 
     }
 
     crearHTML(){
@@ -97,7 +100,13 @@ export class PageBlog extends HTMLElement {
         
         const tarjetasHTML = datos.map(
                 dato =>{
-                    return tarjetaVerticalFavorito.crearTarjeta(dato , "page-blog__favorito--no-favorito");
+                    if(blogFavoritos.esFavorito(dato.id)){
+                        return tarjetaVerticalFavorito.crearTarjeta(dato , " page-blog__boton-favorito page-blog__boton-favorito--favorito");
+                    }
+                    else{
+                         return tarjetaVerticalFavorito.crearTarjeta(dato , "page-blog__boton-favorito page-blog__boton-favorito--no-favorito");
+                    }
+                   
                 } 
         ).join('');
 
@@ -156,8 +165,33 @@ export class PageBlog extends HTMLElement {
     }
 
 
-    
+    inicializarFavoritos() {
+    const grilla = this.shadow.querySelector('app-grilla');
 
+        grilla.addEventListener('click', (event) => {
+            
+            const botonFavorito = event.target.closest('.page-blog__boton-favorito'); 
+            
+            if (!botonFavorito) return; 
+
+            const tarjetaPadre = botonFavorito.closest('app-tarjeta');
+            const idArticulo = tarjetaPadre.id;
+
+
+            if (blogFavoritos.esFavorito(idArticulo)) {
+
+                blogFavoritos.eliminarFavorito(idArticulo);
+                
+                botonFavorito.classList.replace('page-blog__boton-favorito--favorito', 'page-blog__boton-favorito--no-favorito');
+                
+            } else {
+                blogFavoritos.agregarFavorito(idArticulo);
+                
+                botonFavorito.classList.replace('page-blog__boton-favorito--no-favorito', 'page-blog__boton-favorito--favorito'
+                );
+            }
+        });
+    }
 
 }
 

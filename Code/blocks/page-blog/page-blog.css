@@ -47,3 +47,19 @@
 .page-blog__categorias--oculto {
     display: none !important;
 }
+
+
+.page-blog__boton-favorito {
+    font-size: 24px; /* Para que el icono se vea grande y claro */
+    background: none; /* Quitamos el fondo por defecto del botón HTML */
+    border: none; /* Quitamos el borde por defecto */
+    cursor: pointer; /* Para que salga la manita al pasar el mouse */
+}
+
+.page-blog__boton-favorito--favorito {
+    color: yellow; /* Color vivo para indicar que está guardado */
+}
+
+.page-blog__boton-favorito--no-favorito {
+    color: grey; /* Color apagado para el estado inactivo */
+}

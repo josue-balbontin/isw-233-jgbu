@@ -41,6 +41,16 @@ Diseño del CV interactivo en Figma para visualizar la estructura y el diseño a
 
 [Figma link](https://www.figma.com/design/QM0X5I1vRZHzMkErvJaD51/Sin-t%C3%ADtulo?node-id=0-1&t=hTVzGRtSPscoKkFu-1)
 
+## Patrones de diseño de software implementados
+
+* Singletone : Implementado en 'router.js' y 'BlogFavoritos.js' para asegurar que solo exista una instancia de cada uno, facilitando la gestión de rutas y el almacenamiento de favoritos en la aplicación.
+
+* Factory : Implementado en 'tarjetaFactory.js' para crear diferentes tipos de tarjetas (verticales, horizontales, con o sin favoritos) de manera rapida y adaptable ademas para separar responsabilidades.
+
+* Mixin : Se implemento en 'ApiBase.js' para compartir funcionalidades con otras clases y generar una base para la obtencion de datos de la API , permitiendo que cada clase hija implemente su propia api y manteniendo las responsabilidades separadas.
+
+* template Metod : Implementado en 'tarjetaFactory.js' para implementar un esquelo y funcionalidad base para la creacion de tarjetas y luego cada tipo de tarjeta implementa su propia variacion de ese esquema.
+
 ## ChatIA
 
 Chat de IA para resolver dudas y obtener sugerencias sobre el desarrollo del CV interactivo, facilitando el proceso de aprendizaje y mejorando la calidad del proyecto.
@@ -57,4 +67,4 @@ Chat de IA para resolver dudas y obtener sugerencias sobre el desarrollo del CV 
 
     [Chat](https://gemini.google.com/share/d7bcf63d1078)
 
-    [Chat](https://gemini.google.com/share/56cef97f64cd)
+    [Chat](https://gemini.google.com/share/ddf07c3f3d9a)

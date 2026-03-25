@@ -1,5 +1,10 @@
 
-const html = `<h1>hola proyecto</h1>`;
+const html = /*html*/`
+    <section class="page-proyecto">
+        <h1>Proyectos</h1>
+        
+    </section>
+`;
 
 
 export class PageProyecto extends HTMLElement {
@@ -11,6 +16,16 @@ export class PageProyecto extends HTMLElement {
 
     crearHTML(){
         this.shadow.innerHTML = html;
+        
+        const style = document.createElement("style");
+  
+        fetch ('/blocks/page-proyecto/page-proyecto.css').then(
+            response => response.text().then(
+                css => style.innerHTML = css
+            )
+        );
+
+        this.shadow.appendChild(style);
     }
 
 }

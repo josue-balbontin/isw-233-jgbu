@@ -1,5 +1,7 @@
 
-const html =/*html*/`
+const templateTarjeta = document.createElement('template');
+
+templateTarjeta.innerHTML =/*html*/`
     <article class = "tarjeta">
         <div class= "tarjeta__imagen">
             <slot name="imagen"></slot>
@@ -30,7 +32,7 @@ export class AppTarjeta extends HTMLElement {
     }
 
     crearHTML(){
-        this.DOM.innerHTML = html ; 
+        this.DOM.appendChild(templateTarjeta.content.cloneNode(true));
 
         const style = document.createElement("style");
 

@@ -4,22 +4,22 @@ import { AppTarjeta } from "../app-tarjeta/app-tarjeta.js";
 const html =/*html*/`
     <section class = "page-about">
 
-        <app-tarjeta direccion="horizontal">
-            <div slot="imagen">
+        <app-tarjeta class="page-about__contenedor" direccion="horizontal">
+            <div class="page-about__perfil" slot="imagen">
                 <app-tarjeta>
-                    <img slot="imagen" src="https://img.freepik.com/psd-gratis/icono-archivo-jpg-rojo-formato-archivo-imagen-renderizado-3d_84443-57044.jpg?semt=ais_hybrid&w=740&q=80" alt="Foto de Perfil">
+                    <img class="page-about__imagen" slot="imagen" src="https://img.freepik.com/psd-gratis/icono-archivo-jpg-rojo-formato-archivo-imagen-renderizado-3d_84443-57044.jpg?semt=ais_hybrid&w=740&q=80" alt="Foto de Perfil">
                     <div slot="contenido">
-                        <h3>Josue Balbontin</h3>
-                        <p>numero : +591 75041970</p>
-                        <p>correo : josuebalbontin@gmail.com</p>
-                        <p>linkedin : www.linkedin.com/in/josue-galo-balbontin-ugarteche-50149436b</p>
+                        <h3 class="page-about__nombre">Josue Balbontin</h3>
+                        <p class="page-about__texto-imagen">numero : +591 75041970</p>
+                        <p class="page-about__texto-imagen">correo : josuebalbontin@gmail.com</p>
+                        <p class="page-about__texto-imagen">linkedin : www.linkedin.com/in/josue-galo-balbontin-ugarteche-50149436b</p>
 
                     </div>
                 </app-tarjeta>
             </div>
-            <div slot="contenido">
-                <h1>Sobre Mi</h1>
-                <p>Estudiante de Ingeniería de Software en la UCB con conocimientos bases  en desarrollo Backend (Spring Boot) y Frontend (Angular). Con bases en C++ y C#, me motiva entender cómo funcionan las cosas desde la base. Fuera del código, me gustan diferentes temas, desde matemáticas hasta divulgación científica, y disfruto de los videojuegos.</p>
+            <div slot="contenido" class="page-about__contenido">
+                <h1 class="page-about__titulo">Sobre Mi</h1>
+                <p class="page-about__texto">Estudiante de Ingeniería de Software en la UCB con conocimientos bases  en desarrollo Backend (Spring Boot) y Frontend (Angular). Con bases en C++ y C#, me motiva entender cómo funcionan las cosas desde la base. Fuera del código, me gustan diferentes temas, desde matemáticas hasta divulgación científica, y disfruto de los videojuegos.</p>
             </div>
 
 

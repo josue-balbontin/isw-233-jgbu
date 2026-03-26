@@ -1,0 +1,15 @@
+.page-about{
+    margin: 5%;
+}
+
+
+.page-about__imagen{
+    width: 60% ;
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+.page-about__contenido{
+    
+}

@@ -18,7 +18,7 @@ export class PageProyecto extends HTMLElement {
         this.shadow = this.attachShadow({mode : "open" });
         this.datos = []; 
         
-        this.url = './data/blog.json';
+        this.url = './data/proyecto.json';
 
     }
 

@@ -1,0 +1,143 @@
+[
+    {
+        "id": 1,
+        "titulo": "Aplicación de Reserva de buses",
+        "descripcion": "Aplicación de gestión de flota de buses desarrollada en Python con arquitectura cliente-servidor. Implementa funcionalidades de reserva de pasajes, gestión administrativa completa (usuarios, buses, choferes, rutas), sistema de facturación con descuentos, y reportes de auditoría. El proyecto aplica buenas prácticas de bases de datos incluyendo indexación optimizada, triggers de auditoría, y gestión transaccional. Interfaz dual para administradores (CRUD completo) y clientes (reservas, historial, pagos).",
+        "categoria": "software",
+        "imagen": "./img/pasa.png"
+    },
+    {
+        "id": 2,
+        "titulo": "Simulador de Arquitectura x86",
+        "descripcion": "Simulador de Arquitectura x86 desarrollado en Microsoft Excel y VBA. Implementa una arquitectura Von Neumann con pipeline de 5 etapas (IF, ID, EX, MEM, WB), detección de hazards y ejecución superpuesta. Simula una jerarquía de memoria completa (Registros, Caché multinivel con política LRU, RAM y Memoria Virtual) y soporta un conjunto de instrucciones x86-64 en sintaxis AT&T. Incluye un sistema de I/O gestionado por interrupciones y visualización en tiempo real del flujo de datos y estados del procesador.",
+        "categoria": "arquitectura",
+        "imagen": "./img/arqui.png"
+    },
+    {
+        "id": 3,
+        "titulo": "Plataforma de ventas y gestión de tickets de eventos",
+        "descripcion": "Sistema integral de gestión de eventos y venta de entradas desarrollado con <strong>Java (Spring Boot)</strong> y <strong>Angular</strong>. Arquitectura N-Capas diseñada bajo principios <strong>SOLID</strong>, implementando patrones de diseño avanzados como <strong>Observer</strong> para el manejo de concurrencia en reservas temporales (bloqueo de asientos), <strong>State</strong> para el ciclo de vida del ticket y <strong>Template Method</strong> para la estandarización de repositorios. Incluye validación de acceso mediante códigos QR, facturación dinámica y reportes de ventas en tiempo real.",
+        "categoria": "software",
+        "imagen": "./img/tickets.png"
+    },
+    {
+        "id": 4,
+        "titulo": "Sistema de Monitoreo IoT para Agricultura de Precisión",
+        "descripcion": "Plataforma de monitoreo en tiempo real para cultivos agrícolas utilizando sensores IoT y <strong>Raspberry Pi</strong>. Integra sensores de humedad, temperatura y pH del suelo con un dashboard web desarrollado en <strong>Node.js</strong> y <strong>React</strong>. Implementa alertas automáticas vía MQTT y almacenamiento de datos históricos en <strong>InfluxDB</strong> para análisis de tendencias y predicción de riego óptimo.",
+        "categoria": "IoT"
+    },
+    {
+        "id": 5,
+        "titulo": "API REST de Gestión Hospitalaria",
+        "descripcion": "Backend robusto para la gestión de historias clínicas y citas médicas desarrollado con <strong>Spring Boot</strong> y <strong>PostgreSQL</strong>. Implementa autenticación JWT, autorización por roles (médico, enfermero, administrador), auditoría de accesos a datos sensibles y generación de reportes estadísticos. Arquitectura hexagonal con cobertura de pruebas unitarias e integración superior al 85%.",
+        "categoria": "software"
+    },
+    {
+        "id": 6,
+        "titulo": "Compilador de lenguaje educativo MiniLang",
+        "descripcion": "Compilador completo para un lenguaje de programación educativo implementado en <strong>C++</strong>. Incluye análisis léxico con autómatas finitos, parser descendente recursivo, generación de AST, análisis semántico con tabla de símbolos y generación de código intermedio de tres direcciones. Soporta tipado estático, estructuras de control, funciones y manejo básico de arreglos.",
+        "categoria": "compiladores"
+    },
+    {
+        "id": 7,
+        "titulo": "Red Neuronal para Clasificación de Imágenes Médicas",
+        "descripcion": "Modelo de deep learning basado en <strong>CNN (ResNet-50)</strong> para la clasificación de radiografías torácicas, distinguiendo entre neumonía y pulmones sanos. Entrenado con el dataset ChestX-ray14, aplica técnicas de <strong>data augmentation</strong>, transfer learning y fine-tuning. Alcanza una precisión del 94% con métricas de sensibilidad y especificidad optimizadas para uso clínico.",
+        "categoria": "IA"
+    },
+    {
+        "id": 8,
+        "titulo": "Plataforma E-commerce con Microservicios",
+        "descripcion": "Arquitectura de microservicios para una tienda en línea utilizando <strong>Spring Cloud</strong>, <strong>Docker</strong> y <strong>Kubernetes</strong>. Servicios independientes para catálogo, carrito, pagos (integración con Stripe) y notificaciones. Comunicación asíncrona con <strong>RabbitMQ</strong>, API Gateway con rate limiting, circuit breaker con Resilience4j y observabilidad con Prometheus y Grafana.",
+        "categoria": "software"
+    },
+    {
+        "id": 9,
+        "titulo": "Aplicación Móvil de Finanzas Personales",
+        "descripcion": "App mobile multiplataforma desarrollada con <strong>Flutter</strong> y <strong>Dart</strong> para el seguimiento de gastos e ingresos personales. Incluye categorización automática de transacciones, visualización de reportes con gráficos interactivos, sistema de presupuestos con alertas y sincronización en la nube con <strong>Firebase</strong>. Diseño UI/UX basado en Material Design 3.",
+        "categoria": "mobile"
+    },
+    {
+        "id": 10,
+        "titulo": "Sistema de Detección de Intrusiones en Red",
+        "descripcion": "Herramienta de seguridad que analiza tráfico de red en tiempo real utilizando <strong>Python</strong> y <strong>Scapy</strong>. Implementa detección basada en firmas y anomalías, análisis de paquetes TCP/UDP, alertas configurables y dashboard de monitoreo. Entrenado con el dataset NSL-KDD para clasificar ataques DoS, R2L, U2R y probing con un modelo de <strong>Random Forest</strong>.",
+        "categoria": "seguridad"
+    },
+    {
+        "id": 11,
+        "titulo": "Motor de Base de Datos Relacional Simplificado",
+        "descripcion": "Implementación desde cero de un motor de base de datos relacional en <strong>Java</strong>. Soporta un subconjunto de SQL (SELECT, INSERT, UPDATE, DELETE con WHERE), índices B-Tree para búsquedas eficientes, joins básicos y transacciones ACID con write-ahead logging. Proyecto académico enfocado en comprender la arquitectura interna de los SGBD.",
+        "categoria": "bases de datos"
+    },
+    {
+        "id": 12,
+        "titulo": "Pipeline ETL para Data Warehouse Académico",
+        "descripcion": "Sistema de extracción, transformación y carga de datos académicos construido con <strong>Apache Airflow</strong> y <strong>Python</strong>. Consolida información de múltiples fuentes (CSV, APIs REST, bases SQL) en un data warehouse en <strong>Snowflake</strong>. Incluye validación de calidad de datos, manejo de errores, logs detallados y dashboards analíticos en <strong>Power BI</strong>.",
+        "categoria": "data"
+    },
+    {
+        "id": 13,
+        "titulo": "Robot Autónomo con Navegación SLAM",
+        "descripcion": "Robot móvil autónomo basado en <strong>ROS 2</strong> y <strong>Arduino</strong> capaz de mapear y navegar en entornos desconocidos utilizando SLAM (Simultaneous Localization and Mapping). Equipado con LIDAR, cámara de profundidad y sensores ultrasónicos. Implementa planificación de rutas con A* y control PID para motores DC.",
+        "categoria": "robótica"
+    },
+    {
+        "id": 14,
+        "titulo": "Chatbot Conversacional con NLP",
+        "descripcion": "Asistente virtual inteligente desarrollado con <strong>Python</strong>, <strong>Rasa</strong> y modelos de lenguaje. Implementa procesamiento de lenguaje natural para comprender intenciones del usuario, extracción de entidades, manejo de contexto conversacional y respuestas dinámicas. Integrado con APIs externas para consultas de información en tiempo real y desplegado en Telegram.",
+        "categoria": "IA"
+    },
+    {
+        "id": 15,
+        "titulo": "Plataforma de Streaming de Video en Tiempo Real",
+        "descripcion": "Servicio de streaming desarrollado con <strong>Node.js</strong>, <strong>WebRTC</strong> y <strong>Socket.io</strong>. Soporta transmisiones en vivo con baja latencia, chat en tiempo real, sistema de suscripciones y transcodificación adaptativa con FFmpeg. Frontend construido con <strong>Vue.js</strong> y autenticación OAuth 2.0 con Google y GitHub.",
+        "categoria": "software"
+    },
+    {
+        "id": 16,
+        "titulo": "Blockchain para Trazabilidad de Cadena de Suministro",
+        "descripcion": "Red blockchain privada construida con <strong>Hyperledger Fabric</strong> para garantizar la trazabilidad de productos desde el origen hasta el consumidor final. Implementa smart contracts en Go, APIs REST para integración con sistemas ERP y una interfaz web para consulta del historial completo de cada producto con verificación criptográfica.",
+        "categoria": "blockchain"
+    },
+    {
+        "id": 17,
+        "titulo": "Sistema de Reconocimiento Facial con OpenCV",
+        "descripcion": "Aplicación de reconocimiento facial en tiempo real utilizando <strong>Python</strong>, <strong>OpenCV</strong> y <strong>dlib</strong>. Implementa detección de rostros con HOG y CNN, extracción de embeddings faciales con redes siamesas y matching por distancia euclidiana. Aplicado a un sistema de control de asistencia con registro fotográfico y reportes automáticos.",
+        "categoria": "IA"
+    },
+    {
+        "id": 18,
+        "titulo": "Framework de Testing Automatizado para Web",
+        "descripcion": "Framework de pruebas end-to-end construido con <strong>Selenium</strong>, <strong>Cucumber</strong> y <strong>Java</strong>. Implementa el patrón Page Object Model, generación de reportes HTML con Extent Reports, ejecución paralela con Selenium Grid y pipeline CI/CD integrado en Jenkins. Incluye pruebas de accesibilidad WCAG y pruebas de rendimiento con JMeter.",
+        "categoria": "testing"
+    },
+    {
+        "id": 19,
+        "titulo": "Dashboard de Análisis de Sentimiento en Redes Sociales",
+        "descripcion": "Plataforma analítica que recolecta publicaciones de Twitter/X mediante su API y aplica análisis de sentimiento con <strong>BERT</strong> fine-tuned en español. Visualiza tendencias, nubes de palabras y distribuciones de sentimiento en un dashboard interactivo con <strong>Plotly Dash</strong>. Actualización en tiempo real con <strong>Apache Kafka</strong> como broker de mensajes.",
+        "categoria": "data"
+    },
+    {
+        "id": 20,
+        "titulo": "Orquestador de Contenedores Simplificado",
+        "descripcion": "Herramienta CLI en <strong>Go</strong> que implementa un orquestador de contenedores básico. Gestiona el ciclo de vida de contenedores Docker, balanceo de carga round-robin, health checks periódicos, auto-scaling basado en CPU y logs centralizados. Proyecto educativo para comprender los fundamentos de Kubernetes a bajo nivel.",
+        "categoria": "DevOps"
+    },
+    {
+        "id": 21,
+        "titulo": "Simulador de Redes Peer-to-Peer",
+        "descripcion": "Simulador de red P2P descentralizada implementado en <strong>Python</strong> con protocolos de descubrimiento de nodos, tablas de hash distribuidas (DHT) y transferencia de archivos por chunks. Incluye visualización de la topología de red en tiempo real, métricas de latencia y throughput, y resistencia a la desconexión de nodos.",
+        "categoria": "redes"
+    },
+    {
+        "id": 22,
+        "titulo": "Aplicación de Gestión de Proyectos Ágiles",
+        "descripcion": "Herramienta web de gestión de proyectos tipo Kanban desarrollada con <strong>Angular</strong> y <strong>NestJS</strong>. Incluye tableros personalizables con drag-and-drop, gestión de sprints, burndown charts, asignación de tareas con notificaciones en tiempo real vía WebSockets y exportación de reportes en PDF. Autenticación con Azure AD.",
+        "categoria": "software"
+    },
+    {
+        "id": 23,
+        "titulo": "Sistema de Recomendación de Películas",
+        "descripcion": "Motor de recomendaciones basado en filtrado colaborativo y basado en contenido utilizando <strong>Python</strong> y <strong>Scikit-learn</strong>. Entrenado con el dataset MovieLens, implementa factorización de matrices con SVD, cálculo de similitud coseno y un modelo híbrido que combina ambos enfoques. API REST con FastAPI para integración con frontends.",
+        "categoria": "IA"
+    }
+]

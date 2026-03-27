@@ -1,9 +1,12 @@
 
 class tarjeta{
 
-    static generarContenidoInterno(datos){
+    static generarContenidoInterno(datos , usarLazy = false){
+        
+        const atributoImagen = usarLazy ? `data-src="${datos.imagen}"` : `src="${datos.imagen}"`;
+
         return /*html*/`
-            <img slot="imagen" src="${datos.imagen}" alt="${datos.titulo}">
+            <img slot="imagen" ${atributoImagen} alt="${datos.titulo}">
             <div slot="contenido">
                 <h2>${datos.titulo}</h2>
                 <p>${datos.descripcion}</p>
@@ -18,10 +21,10 @@ class tarjeta{
 
 
 export class tarjetaVertical extends tarjeta{
-    static crearTarjeta(datos){
+    static crearTarjeta(datos, usarLazy = false){
         return /*html*/`
           <app-tarjeta id="${datos.id}" >
-            ${this.generarContenidoInterno(datos)}
+            ${this.generarContenidoInterno(datos, usarLazy)}
           </app-tarjeta>
         `
 
@@ -33,10 +36,10 @@ export class tarjetaVertical extends tarjeta{
 
 
 export class tarjetaHorizontal extends tarjeta{
-    static crearTarjeta(datos){
+    static crearTarjeta(datos , usarLazy = false){
         return /*html*/`
             <app-tarjeta direccion="horizontal" id="${datos.id}">
-                  ${this.generarContenidoInterno(datos)} 
+                  ${this.generarContenidoInterno(datos, usarLazy)} 
             </app-tarjeta>
         `
 
@@ -46,10 +49,10 @@ export class tarjetaHorizontal extends tarjeta{
 
 
 export class tarjetaHorizontalReversa extends tarjeta{
-    static crearTarjeta(datos){
+    static crearTarjeta(datos, usarLazy = false){
         return /*html*/`
             <app-tarjeta direccion="horizontal-reversa" id="${datos.id}">
-                 ${this.generarContenidoInterno(datos)}
+                 ${this.generarContenidoInterno(datos, usarLazy)}
             </app-tarjeta>
         `
 
@@ -59,10 +62,10 @@ export class tarjetaHorizontalReversa extends tarjeta{
 
 
 export class tarjetaVerticalFavorito extends tarjeta{
-    static crearTarjeta(datos , classfavorito){
+    static crearTarjeta(datos , classfavorito , usarLazy = false){
         return /*html*/`
             <app-tarjeta id="${datos.id}">
-                ${this.generarContenidoInterno(datos)}
+                ${this.generarContenidoInterno(datos, usarLazy)}
 
                 <div slot="acciones">
                     <button class="${classfavorito}" >Favorito</button>

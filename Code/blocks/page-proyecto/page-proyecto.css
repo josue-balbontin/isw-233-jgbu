@@ -1,0 +1,12 @@
+.page-proyecto{
+    margin: 5%;
+    font-family: "Open Sans", sans-serif;
+}
+
+.page-proyecto__titulo {
+    margin: 0 0 0.8rem;
+    color: #ffd700;
+    font-family: "Fira Code", monospace;
+    font-size: 1.9rem;
+    font-weight: 400;
+}

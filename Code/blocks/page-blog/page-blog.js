@@ -6,6 +6,7 @@ import { tarjetaHorizontal, tarjetaVertical, tarjetaVerticalFavorito } from "../
 import { Buscadorinput } from "../../services/buscadorInput.js";
 import { Filtro } from "../../services/Filtro.js";
 import { blogFavoritos } from "../../services/BlogFavoritos.js";
+import { WrapperIntersectionObserver } from "../../services/WrapperIntersationObserver.js";
 
 const html = /*html*/` 
     <section class = "page-blog">
@@ -42,6 +43,8 @@ export class PageBlog extends HTMLElement {
         this.datosCategoria="categoria"; 
         
         this.url = './data/blog.json';
+
+        this.observer = null;
         
     }
 
@@ -101,10 +104,10 @@ export class PageBlog extends HTMLElement {
         const tarjetasHTML = datos.map(
                 dato =>{
                     if(blogFavoritos.esFavorito(dato.id)){
-                        return tarjetaVerticalFavorito.crearTarjeta(dato , " page-blog__boton-favorito page-blog__boton-favorito--favorito");
+                        return tarjetaVerticalFavorito.crearTarjeta(dato , " page-blog__boton-favorito page-blog__boton-favorito--favorito" , true);
                     }
                     else{
-                         return tarjetaVerticalFavorito.crearTarjeta(dato , "page-blog__boton-favorito page-blog__boton-favorito--no-favorito");
+                         return tarjetaVerticalFavorito.crearTarjeta(dato , "page-blog__boton-favorito page-blog__boton-favorito--no-favorito" , true);
                     }
                    
                 } 
@@ -112,7 +115,45 @@ export class PageBlog extends HTMLElement {
 
         this.shadow.querySelector('app-grilla').innerHTML = tarjetasHTML;
 
+        this.iniciarIntersectionObserver(); 
     }
+
+    iniciarIntersectionObserver(){
+        if(this.observer){
+            this.observer.destructor();
+        }
+
+        const opciones = {
+            root: null,
+            rootMargin: '0px 0px 200px 0px',
+            threshold: 0
+        };
+
+        const callback = (entradas) =>{
+            entradas.forEach(entrada => {
+                if (entrada.isIntersecting) {
+                    const img = entrada.target; 
+
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+
+                    this.observer.dejarDeObservar(img);
+                }
+
+            });
+        };
+
+        this.observer = new WrapperIntersectionObserver(opciones , callback);
+
+        const imagenesLazy = this.shadow.querySelectorAll('img[data-src]');
+
+        imagenesLazy.forEach(img => {
+            this.observer.observar(img);
+        });
+    }
+
 
     buscador(){
         const input = this.shadow.querySelector('.page-blog__input-buscar');

@@ -51,6 +51,12 @@ Diseño del CV interactivo en Figma para visualizar la estructura y el diseño a
 
 * template Metod : Implementado en 'tarjetaFactory.js' para implementar un esquelo y funcionalidad base para la creacion de tarjetas y luego cada tipo de tarjeta implementa su propia variacion de ese esquema.
 
+## Observers
+
+* IntersectionObserver : aplicacion de intersection observer para cargar las imagenes de las tarjetas en 'page-blog,js' para que estan sean cargadas solo cuando el usuario las necesita y mejorar el rendimiento este observer no se pone en las tarjetas ya que si estan ahi habria un observer por cada tarjeta siendo no eficiente 
+
+
+
 ## ChatIA
 
 Chat de IA para resolver dudas y obtener sugerencias sobre el desarrollo del CV interactivo, facilitando el proceso de aprendizaje y mejorando la calidad del proyecto.

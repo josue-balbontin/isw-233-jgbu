@@ -1,20 +1,29 @@
 
 export class WrapperIntersectionObserver{
 
-    constructor(opciones , callback , elemento){
+    constructor(opciones , callback ){
         this.opciones = opciones;
         this.callback = callback;
-        this.elemento = elemento;
         this.observer = new IntersectionObserver(this.callback , this.opciones);
     }
 
-    observar(){
-        this.observer.observe(this.elemento);
+    observar(elemento){
+        if(elemento){
+             this.observer.observe(elemento);
+        }
+       
+    }
+
+    dejarDeObservar(elemento){
+        if (elemento) {
+            this.observer.unobserve(elemento);
+        }
     }
 
     destructor(){
-        this.observer.disconnect();
-        return null;
+        if (this.observer) {
+            this.observer.disconnect();
+        }
     }
 
 

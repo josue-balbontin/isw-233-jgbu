@@ -1,3 +1,5 @@
+import { ApiBase } from "../../services/api/ApiBase.js";
+import { tarjetaVertical } from "../../services/tarjetaFactory.js";
 import { AppGrilla } from "../app-grilla/app-grilla.js";
 
 const html = /*html*/`
@@ -15,11 +17,15 @@ export class PageProyecto extends HTMLElement {
         super(); 
         this.shadow = this.attachShadow({mode : "open" });
         this.datos = []; 
+        
+        this.url = './data/blog.json';
 
     }
 
-    connectedCallback(){
+    async connectedCallback(){
         this.crearHTML(); 
+
+        await this.cargarDatos();
 
         this.imprimirProyectos(); 
     }
@@ -38,12 +44,24 @@ export class PageProyecto extends HTMLElement {
         this.shadow.appendChild(style);
     }
 
+    async cargarDatos(){ 
+        this.datos = await this.obtener(); 
+    }
+
     imprimirProyectos(){
         const grilla = this.shadow.querySelector("app-grilla");
 
+        const tarjetasHTML = this.datos.map(proyecto=>
+        {
+            return tarjetaVertical.crearTarjeta(proyecto); 
+        }).join("");
+
+        grilla.innerHTML = tarjetasHTML;
 
     }
 
 }
+
+Object.assign(PageProyecto.prototype, ApiBase);
 
 customElements.define("page-proyecto", PageProyecto);

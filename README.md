@@ -53,7 +53,9 @@ Diseño del CV interactivo en Figma para visualizar la estructura y el diseño a
 
 ## Observers
 
-* IntersectionObserver : aplicacion de intersection observer para cargar las imagenes de las tarjetas en 'page-blog,js' para que estan sean cargadas solo cuando el usuario las necesita y mejorar el rendimiento este observer no se pone en las tarjetas ya que si estan ahi habria un observer por cada tarjeta siendo no eficiente 
+* IntersectionObserver : aplicacion de intersection observer para cargar las imagenes de las tarjetas en 'page-blog,js' para que estan sean cargadas solo cuando el usuario las necesita y mejorar el rendimiento este observer no se pone en las tarjetas ya que si estan ahi habria un observer por cada tarjeta siendo no eficiente , siendo la opcion mas eficiente ya que no se tiene que observar cada segundo el scroll 
+
+
 
 
 

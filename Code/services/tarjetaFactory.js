@@ -3,7 +3,7 @@ class tarjeta{
 
     static generarContenidoInterno(datos , usarLazy = false){
         
-        const atributoImagen = usarLazy ? `data-src="${datos.imagen}"` : `src="${datos.imagen}"`;
+        const atributoImagen = usarLazy ? `data-imagen="${datos.imagen}"` : `src="${datos.imagen}"`;
 
         return /*html*/`
             <img slot="imagen" ${atributoImagen} alt="${datos.titulo}">

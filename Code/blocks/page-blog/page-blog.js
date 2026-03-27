@@ -134,9 +134,9 @@ export class PageBlog extends HTMLElement {
                 if (entrada.isIntersecting) {
                     const img = entrada.target; 
 
-                    if (img.dataset.src) {
-                        img.src = img.dataset.src;
-                        img.removeAttribute('data-src');
+                    if (img.dataset.imagen) {
+                        img.src = img.dataset.imagen;
+                        img.removeAttribute('data-imagen');
                     }
 
                     this.observer.dejarDeObservar(img);
@@ -147,7 +147,7 @@ export class PageBlog extends HTMLElement {
 
         this.observer = new WrapperIntersectionObserver(opciones , callback);
 
-        const imagenesLazy = this.shadow.querySelectorAll('img[data-src]');
+        const imagenesLazy = this.shadow.querySelectorAll('img[data-imagen]');
 
         imagenesLazy.forEach(img => {
             this.observer.observar(img);

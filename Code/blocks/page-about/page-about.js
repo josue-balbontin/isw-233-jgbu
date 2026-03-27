@@ -7,8 +7,8 @@ const html =/*html*/`
         <app-tarjeta class="page-about__contenedor" direccion="horizontal">
             <div class="page-about__perfil" slot="imagen">
                 <app-tarjeta>
-                    <img class="page-about__imagen" slot="imagen" src="https://img.freepik.com/psd-gratis/icono-archivo-jpg-rojo-formato-archivo-imagen-renderizado-3d_84443-57044.jpg?semt=ais_hybrid&w=740&q=80" alt="Foto de Perfil">
-                    <div slot="contenido">
+                    <img class="page-about__imagen" slot="imagen" src="img/FotoPerfil.png" alt="Foto de Perfil">
+                    <div class="page-about__contenido-imagen" slot="contenido">
                         <h3 class="page-about__nombre">Josue Balbontin</h3>
                         <p class="page-about__texto-imagen">numero : +591 75041970</p>
                         <p class="page-about__texto-imagen">correo : josuebalbontin@gmail.com</p>

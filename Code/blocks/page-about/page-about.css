@@ -1,7 +1,17 @@
 .page-about{
     margin: 5%;
+    font-family: "Fira Code", monospace;
 }
 
+.page-about__titulo{
+    color: rgba(255, 215, 0, 0.95);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #000;
+    font-size: 4rem;
+    font-style: normal;
+    font-weight: 450;
+    line-height: normal;
+}
 
 .page-about__imagen{
     width: 60% ;
@@ -10,6 +20,9 @@
     border-radius: 50%;
 }
 
-.page-about__contenido{
-    
+.page-about__nombre{
+    text-align: center;
+    margin: 0;
+    font-family: "Inter";
 }
+

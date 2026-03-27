@@ -13,5 +13,5 @@ import { PageContacto } from "./blocks/page-contacto/page-contacto.js";
 
 addEventListener("DOMContentLoaded", () => {
 
-  
+    router.enrutar(); 
 });

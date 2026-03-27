@@ -1,15 +1,15 @@
 
 const html= /*html*/`
     <section class="page-contacto">
-        <h1>Contacto</h1>
+        <h1 class="page-contacto__titulo">Contacto</h1>
         
-        <h3>Nombre:</h3>
+        <h3 class="page-contacto__titulo-input" >Nombre:</h3>
         <input type="text">
 
-        <h3>Correo:</h3>
+        <h3 class="page-contacto__titulo-input">Correo:</h3>
         <input type="email">
 
-        <h3>Mensaje:</h3>
+        <h3 class="page-contacto__titulo-input">Mensaje:</h3>
         <textarea name="" id="" ></textarea>
 
         

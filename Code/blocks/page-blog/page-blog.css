@@ -1,65 +1,96 @@
 
 .page-blog {
     margin: 5%;
+  
+    font-family: "Open Sans", sans-serif;
 }
 
-.page-blog__titulo{
-     font-family: "Sans Serif Collection";
-    color: rgba(255, 215, 0, 0.95);
+.page-blog__titulo {
+    margin: 0 0 0.8rem;
+    color: #ffd700;
+    font-family: "Fira Code", monospace;
+    font-size: 1.9rem;
+    font-weight: 400;
 }
 
-
-.page-blog__buscador{
+.page-blog__buscador {
     display: flex;
-    
     flex-direction: column;
-
-
-    
     align-items: center;
-    
-    padding: 3%;
-    
-    
+    gap: 0.6rem;
+    padding: 0.6rem 0 1rem;
 }
 
+.page-blog__buscador  {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+}
 
-.page-blog__categorias{
+.page-blog__input-buscar {
+    min-width: 220px;
+    padding: 0.5rem 0.7rem;
+    border: 1px solid #4b4b4a;
+    border-radius: 0.5rem;
+    background-color: #1f1f1f;
+    color: #ffffff;
+}
+
+.page-blog__boton-categoria, .page-blog__boton-buscar {
+    padding: 0.5rem 0.9rem;
+    border: 1px solid #000000;
+    border-radius: 0.5rem;
+    background-color: #ffd700;
+    color: #000000;
+    font-weight: 700;
+}
+
+.page-blog__categorias {
     display: flex;
     justify-content: center;
-    padding-top: 10px;
-    
-    gap: 10px 20px; 
+    gap: 0.5rem;
     flex-wrap: wrap;
-
 }
 
-.page-blog__categorias p{
-    background-color: black;
-    color: white;
-    padding: 1px 20px;
-    border-radius: 5px;
-
+.page-blog__categorias p {
     margin: 0;
-    
+    padding: 0.2rem 0.8rem;
+    border: 1px solid #4b4b4a;
+    border-radius: 0.4rem;
+    background-color: #1f1f1f;
+    color: #ffffff;
 }
 
 .page-blog__categorias--oculto {
     display: none !important;
 }
 
-
 .page-blog__boton-favorito {
-    font-size: 24px; /* Para que el icono se vea grande y claro */
-    background: none; /* Quitamos el fondo por defecto del botón HTML */
-    border: none; /* Quitamos el borde por defecto */
-    cursor: pointer; /* Para que salga la manita al pasar el mouse */
+    font-size: 20px;
+    background-color: transparent;
+    border: 1px solid #5a5a5a;
+    border-radius: 0.4rem;
+    padding: 0.15rem 0.45rem;
 }
 
 .page-blog__boton-favorito--favorito {
-    color: yellow; /* Color vivo para indicar que está guardado */
+    color: #ffd700;
+    border-color: #ffd700;
 }
 
 .page-blog__boton-favorito--no-favorito {
-    color: grey; /* Color apagado para el estado inactivo */
+    color: #808080;
+}
+
+app-grilla {
+    margin-top: 0.4rem;
+}
+
+app-tarjeta {
+    border: 1px solid #4b4b4a;
+    border-radius: 0.6rem;
+    padding: 0.7rem;
+    background-color: #2c2c2c;
 }

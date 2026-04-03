@@ -28,63 +28,72 @@
         "id": 4,
         "titulo": "IA explicable en diagnóstico clínico: transparencia y confianza",
         "descripcion": "Exploro técnicas de <strong>IA explicable (XAI)</strong> aplicadas al diagnóstico clínico, su impacto en la toma de decisiones médicas y cómo balancear precisión con interpretabilidad para ganar la confianza de profesionales de la salud.",
-        "categoria": "salud"
+        "categoria": "salud",
+        "imagen" : "https://i.pinimg.com/originals/47/90/62/4790621f38f9d9b5f45eca1dc0f5f9eb.jpg"
     },
 
     {
         "id": 5,
         "titulo": "DataOps y calidad de datos para análisis en tiempo real",
         "descripcion": "Una guía práctica sobre cómo implementar pipelines robustos de <strong>DataOps</strong>, validación de esquemas y pruebas automatizadas para asegurar la calidad de datos en sistemas analíticos en tiempo real.",
-        "categoria": "data"
+        "categoria": "data",
+          "imagen" : "https://i.pinimg.com/originals/47/90/62/4790621f38f9d9b5f45eca1dc0f5f9eb.jpg"
     },
 
     {
         "id": 6,
         "titulo": "Robótica colaborativa: seguridad y control en entornos industriales",
         "descripcion": "Analizo arquitecturas de control y medidas de seguridad para robots colaborativos (cobots), considerando sensores, certificaciones y estrategias para minimizar riesgos en el trabajo humano-robot.",
-        "categoria": "robótica"
+        "categoria": "robótica",
+        "imagen" : "https://i.pinimg.com/originals/47/90/62/4790621f38f9d9b5f45eca1dc0f5f9eb.jpg"
     },
 
     {
         "id": 7,
         "titulo": "Privacidad diferencial: protección de datos en investigación médica",
         "descripcion": "Presento conceptos de <strong>privacidad diferencial</strong> y cómo aplicarlos para compartir conjuntos de datos médicos respetando la confidencialidad de los pacientes y las regulaciones vigentes.",
-        "categoria": "privacidad"
+        "categoria": "privacidad",
+        "imagen" : "https://i.pinimg.com/originals/47/90/62/4790621f38f9d9b5f45eca1dc0f5f9eb.jpg"
     },
 
     {
         "id": 8,
         "titulo": "Microservicios y gestión de transacciones distribuidas",
         "descripcion": "Discuto patrones para coordinar transacciones en arquitecturas de microservicios, incluidas sagas y compensaciones, con ejemplos prácticos y trade-offs.",
-        "categoria": "arquitectura"
+        "categoria": "arquitectura",
+        "imagen" : "https://i.pinimg.com/originals/47/90/62/4790621f38f9d9b5f45eca1dc0f5f9eb.jpg"
     },
 
     {
         "id": 9,
         "titulo": "Visualización para ciencia de datos: mejores prácticas",
         "descripcion": "Revisamos librerías y principios de visualización para comunicar hallazgos de forma efectiva: selección de gráficas, colores accesibles y storytelling visual.",
-        "categoria": "data"
+        "categoria": "data",
+        "imagen" : "https://i.pinimg.com/originals/47/90/62/4790621f38f9d9b5f45eca1dc0f5f9eb.jpg"
     },
 
     {
         "id": 10,
         "titulo": "Seguridad en la nube: modelos de responsabilidad compartida",
         "descripcion": "Se explica el modelo de responsabilidad compartida en proveedores cloud, junto a controles recomendados para IAM, cifrado y gobernanza.",
-        "categoria": "cloud"
+        "categoria": "cloud",
+        "imagen" : "https://img3.wallspic.com/crops/5/1/7/5/7/175715/175715-el_parque_nacional_los_glaciares-dos_medicine_lake-lago_de_avalancha-montana_reynolds-el_lago_mcdonald-7680x4320.jpg"
     },
 
     {
         "id": 11,
         "titulo": "Optimización de consultas en bases de datos relacionales",
         "descripcion": "Consejos sobre indexación, análisis de planes de ejecución y refactorización de consultas SQL para mejorar el rendimiento en sistemas con alta carga.",
-        "categoria": "bases de datos"
+        "categoria": "bases de datos",
+        "imagen" : "https://img3.wallspic.com/crops/5/1/7/5/7/175715/175715-el_parque_nacional_los_glaciares-dos_medicine_lake-lago_de_avalancha-montana_reynolds-el_lago_mcdonald-7680x4320.jpg"
     },
 
     {
         "id": 12,
         "titulo": "Desarrollo móvil multiplataforma: elecciones y rendimiento",
         "descripcion": "Comparo frameworks multiplataforma y técnicas para optimizar el rendimiento, consumo de batería y experiencia de usuario en apps móviles modernas.",
-        "categoria": "mobile"
+        "categoria": "mobile",
+        "imagen" : "https://img3.wallspic.com/crops/5/1/7/5/7/175715/175715-el_parque_nacional_los_glaciares-dos_medicine_lake-lago_de_avalancha-montana_reynolds-el_lago_mcdonald-7680x4320.jpg"
     },
 
     {

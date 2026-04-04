@@ -57,7 +57,7 @@ Diseño del CV interactivo en Figma para visualizar la estructura y el diseño a
 
 * MutationObserver : aplicacion de mutation observer en la grilla de 'page-blog.js' para detectar cuando se agregan nuevas tarjetas al filtrar o buscar y aplicar una animacion de aparicion de forma automatica, mejorando la experiencia visual sin volver a renderizar todo el contenedor en cada cambio es el mejor por que observa las inserciones directamente en la grilla y solo reacciona cuando cambia el DOM.
 
-* ResizeObserver :
+* ResizeObserver : aplicacion de resize observer en 'app-tarjeta.js', donde cada tarjeta se observa a si misma para activar el modo compacto cuando su ancho baja (por ejemplo en tarjetas con direccion horizontal). Resuelve el problema de diseños que se rompen cuando el contenedor se hace mas estrecho por cambios internos de la SPA, incluso si la ventana no cambia de tamaño. Es la solucion adecuada frente a alternativas simples como window.resize o media queries globales, porque mide el tamaño real del componente y reacciona solo cuando ese elemento cambia.
 
 
 

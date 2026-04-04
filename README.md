@@ -81,4 +81,4 @@ Chat de IA para resolver dudas y obtener sugerencias sobre el desarrollo del CV 
 
 * Sprint 4
 
-    [Chat](https://gemini.google.com/share/d04cc8804673)
+    [Chat](https://gemini.google.com/share/da69000cc9f1)

@@ -55,7 +55,9 @@ Diseño del CV interactivo en Figma para visualizar la estructura y el diseño a
 
 * IntersectionObserver : aplicacion de intersection observer para cargar las imagenes de las tarjetas en 'page-blog,js' para que estan sean cargadas solo cuando el usuario las necesita y mejorar el rendimiento este observer no se pone en las tarjetas ya que si estan ahi habria un observer por cada tarjeta siendo no eficiente , siendo la opcion mas eficiente ya que no se tiene que observar cada segundo el scroll 
 
-* MutationObserver : 
+* MutationObserver : aplicacion de mutation observer en la grilla de 'page-blog.js' para detectar cuando se agregan nuevas tarjetas al filtrar o buscar y aplicar una animacion de aparicion de forma automatica, mejorando la experiencia visual sin volver a renderizar todo el contenedor en cada cambio es el mejor por que observa las inserciones directamente en la grilla y solo reacciona cuando cambia el DOM.
+
+* ResizeObserver :
 
 
 

@@ -1,4 +1,6 @@
 
+import { WrapperResizeObserver } from "../../services/WrapperResizeObserver.js";
+
 const templateTarjeta = document.createElement('template');
 
 templateTarjeta.innerHTML =/*html*/`
@@ -27,8 +29,21 @@ export class AppTarjeta extends HTMLElement {
     constructor(){
         super(); 
         this.DOM = this.attachShadow({mode : "open"});
+        this.resizeObserver = null;
         this.crearHTML(); 
     
+    }
+
+    connectedCallback() {
+        this.iniciarResizeObserver();
+        this.actualizarModoCompacto(this.getBoundingClientRect().width);
+    }
+
+    disconnectedCallback() {
+        if (this.resizeObserver) {
+            this.resizeObserver.destructor();
+            this.resizeObserver = null;
+        }
     }
 
     crearHTML(){
@@ -46,6 +61,29 @@ export class AppTarjeta extends HTMLElement {
 
 
 
+    }
+
+    iniciarResizeObserver() {
+        if (this.resizeObserver) {
+            this.resizeObserver.destructor();
+        }
+
+        const callback = (entradas) => {
+            entradas.forEach((entrada) => {
+                this.actualizarModoCompacto(entrada.contentRect.width);
+            });
+        };
+
+        this.resizeObserver = new WrapperResizeObserver(callback);
+        this.resizeObserver.observar(this);
+    }
+
+    actualizarModoCompacto(ancho) {
+        const direccion = this.getAttribute("direccion");
+        const esHorizontal = direccion === "horizontal" || direccion === "horizontal-reversa";
+        const activarModoCompacto = esHorizontal && ancho < 450;
+
+        this.classList.toggle("tarjeta--compacta", activarModoCompacto);
     }
 
 

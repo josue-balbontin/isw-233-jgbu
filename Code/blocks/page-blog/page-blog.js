@@ -7,6 +7,7 @@ import { Buscadorinput } from "../../services/buscadorInput.js";
 import { Filtro } from "../../services/Filtro.js";
 import { blogFavoritos } from "../../services/BlogFavoritos.js";
 import { WrapperIntersectionObserver } from "../../services/WrapperIntersationObserver.js";
+import { WrapperMutationObserver } from "../../services/WrapperMutationObserver.js";
 
 const html = /*html*/` 
     <section class = "page-blog">
@@ -45,12 +46,15 @@ export class PageBlog extends HTMLElement {
         this.url = './data/blog.json';
 
         this.observer = null;
+        this.mutationObserver = null;
         
     }
 
     async connectedCallback(){
             
         this.crearHTML();
+
+        this.iniciarMutationObserver();
     
         await this.cargarDatos(); 
 
@@ -63,6 +67,18 @@ export class PageBlog extends HTMLElement {
         this.categorias(); 
 
         this.inicializarFavoritos(); 
+    }
+
+    disconnectedCallback(){
+        if (this.observer) {
+            this.observer.destructor();
+            this.observer = null;
+        }
+
+        if (this.mutationObserver) {
+            this.mutationObserver.destructor();
+            this.mutationObserver = null;
+        }
     }
 
     crearHTML(){
@@ -152,6 +168,46 @@ export class PageBlog extends HTMLElement {
         imagenesLazy.forEach(img => {
             this.observer.observar(img);
         });
+    }
+
+    iniciarMutationObserver() {
+        if (this.mutationObserver) {
+            this.mutationObserver.destructor();
+        }
+
+        const grilla = this.shadow.querySelector('app-grilla');
+
+        if (!grilla) {
+            return;
+        }
+
+        const opciones = {
+            childList: true,
+            subtree: false
+        };
+
+        const callback = (listaMutaciones) => {
+            listaMutaciones.forEach(mutacion => {
+                if (mutacion.type !== 'childList' || mutacion.addedNodes.length === 0) {
+                    return;
+                }
+
+                mutacion.addedNodes.forEach(nodo => {
+                    if (nodo.nodeType !== Node.ELEMENT_NODE) {
+                        return;
+                    }
+
+                    if (!nodo.matches('app-tarjeta')) {
+                        return;
+                    }
+
+                    nodo.classList.add('page-blog__tarjeta-aparecer');
+                });
+            });
+        };
+
+        this.mutationObserver = new WrapperMutationObserver(callback);
+        this.mutationObserver.observar(grilla, opciones);
     }
 
 

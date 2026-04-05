@@ -1,5 +1,7 @@
 
-const html = /*html*/`
+const templategrilla = document.createElement("template"); 
+
+templategrilla.innerHTML= /*html*/`
     
     <div class="grilla">
         <slot></slot>
@@ -26,7 +28,7 @@ export class AppGrilla extends HTMLElement{
     }
 
     crearHTML(){
-        this.DOM.innerHTML = html;
+        this.DOM.appendChild(templategrilla.content.cloneNode(true));
 
         const style = document.createElement("style"); 
 

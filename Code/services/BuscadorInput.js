@@ -1,9 +1,10 @@
 export const Buscadorinput= {
 
 
-    detectarCambio: function (input , buton) {
+    detectarCambio: function (input , buton , accion) {
         buton.addEventListener( "click" , () => {
-            alert("Buscando: " + input.value);
+            const texto = input.value;
+            accion(texto);
         }
 
         )

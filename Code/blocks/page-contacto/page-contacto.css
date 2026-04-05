@@ -1,0 +1,59 @@
+.page-contacto {
+	margin: 5%;
+	padding: 1.5rem;
+	background-color: #252525;
+	border-radius: 1rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	font-family: "Open Sans", sans-serif;
+	color: #ffffff;
+}
+
+.page-contacto__titulo {
+	margin: 0 0 1rem 0;
+	text-align: center;
+	color: #ffd700;
+	font-family: "Fira Code", monospace;
+	font-size: 2rem;
+	font-weight: 400;
+}
+
+.page-contacto__titulo-input {
+	margin: 0.5rem 0 0.2rem;
+	color: #ffd700;
+	font-size: 1rem;
+	font-weight: 400;
+}
+
+.page-contacto input,
+.page-contacto textarea {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 0.6rem;
+	border: 1px solid #4b4b4a;
+	border-radius: 0.5rem;
+	background-color: #1f1f1f;
+	color: #ffffff;
+	font-family: "Open Sans", sans-serif;
+	font-size: 1rem;
+}
+
+.page-contacto textarea {
+	min-height: 120px;
+	resize: vertical;
+}
+
+.page-contacto button {
+	margin-top: 0.8rem;
+	align-self: flex-start;
+	padding: 0.6rem 1.2rem;
+	border: 1px solid #000000;
+	border-radius: 0.6rem;
+	background-color: #ffd700;
+	color: #000000;
+	font-family: "Open Sans", sans-serif;
+	font-size: 1rem;
+	font-weight: 700;
+}
+

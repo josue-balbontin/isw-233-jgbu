@@ -40,6 +40,12 @@
     align-items: flex-start;
 }
 
+:host(.tarjeta--compacta[direccion="horizontal"]) .tarjeta,
+:host(.tarjeta--compacta[direccion="horizontal-reversa"]) .tarjeta {
+    flex-direction: column;
+    align-items: center;
+}
+
 .tarjeta__contenido {
     display: flex;
     flex-direction: column;

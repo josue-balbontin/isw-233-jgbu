@@ -41,6 +41,26 @@ Diseño del CV interactivo en Figma para visualizar la estructura y el diseño a
 
 [Figma link](https://www.figma.com/design/QM0X5I1vRZHzMkErvJaD51/Sin-t%C3%ADtulo?node-id=0-1&t=hTVzGRtSPscoKkFu-1)
 
+## Patrones de diseño de software implementados
+
+* Singletone : Implementado en 'router.js' y 'BlogFavoritos.js' para asegurar que solo exista una instancia de cada uno, facilitando la gestión de rutas y el almacenamiento de favoritos en la aplicación.
+
+* Factory : Implementado en 'tarjetaFactory.js' para crear diferentes tipos de tarjetas (verticales, horizontales, con o sin favoritos) de manera rapida y adaptable ademas para separar responsabilidades.
+
+* Mixin : Se implemento en 'ApiBase.js' para compartir funcionalidades con otras clases y generar una base para la obtencion de datos de la API , permitiendo que cada clase hija implemente su propia api y manteniendo las responsabilidades separadas.
+
+* template Metod : Implementado en 'tarjetaFactory.js' para implementar un esquelo y funcionalidad base para la creacion de tarjetas y luego cada tipo de tarjeta implementa su propia variacion de ese esquema.
+
+## Observers
+
+* IntersectionObserver : aplicacion de intersection observer para cargar las imagenes de las tarjetas en 'page-blog,js' para que estan sean cargadas solo cuando el usuario las necesita y mejorar el rendimiento este observer no se pone en las tarjetas ya que si estan ahi habria un observer por cada tarjeta siendo no eficiente , siendo la opcion mas eficiente ya que no se tiene que observar cada segundo el scroll 
+
+* MutationObserver : aplicacion de mutation observer en la grilla de 'page-blog.js' para detectar cuando se agregan nuevas tarjetas al filtrar o buscar y aplicar una animacion de aparicion de forma automatica, mejorando la experiencia visual sin volver a renderizar todo el contenedor en cada cambio es el mejor por que observa las inserciones directamente en la grilla y solo reacciona cuando cambia el DOM.
+
+* ResizeObserver : aplicacion de resize observer en 'app-tarjeta.js', donde cada tarjeta se observa a si misma para activar el modo compacto cuando su ancho baja (por ejemplo en tarjetas con direccion horizontal). Resuelve el problema de diseños que se rompen cuando el contenedor se hace mas estrecho por cambios internos de la SPA, incluso si la ventana no cambia de tamaño. Es la solucion adecuada frente a alternativas simples como window.resize o media queries globales, porque mide el tamaño real del componente y reacciona solo cuando ese elemento cambia.
+
+
+
 ## ChatIA
 
 Chat de IA para resolver dudas y obtener sugerencias sobre el desarrollo del CV interactivo, facilitando el proceso de aprendizaje y mejorando la calidad del proyecto.
@@ -57,4 +77,8 @@ Chat de IA para resolver dudas y obtener sugerencias sobre el desarrollo del CV 
 
     [Chat](https://gemini.google.com/share/d7bcf63d1078)
 
-    [Chat](https://gemini.google.com/share/56cef97f64cd)
+    [Chat](https://gemini.google.com/share/c5c0d40d10d1)
+
+* Sprint 4
+
+    [Chat](https://gemini.google.com/share/da69000cc9f1)

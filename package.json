@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/josue-balbontin/isw-233-jgbu#readme",
   "devDependencies": {
-    "vite": "^8.0.5"
+    "vite": "^8.0.5",
+    "vite-plugin-handlebars": "^2.0.0"
   }
 }

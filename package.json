@@ -4,7 +4,9 @@
   "description": "Soy Josué Balbontín. Este repositorio reúne ejercicios y un CV interactivo para practicar JavaScript, HTML y CSS con el objetivo de crear un currículum atractivo para reclutadores en la asignatura Programación Web.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",

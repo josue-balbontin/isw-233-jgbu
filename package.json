@@ -1,0 +1,24 @@
+{
+  "name": "isw-233-jgbu",
+  "version": "1.0.0",
+  "description": "Soy Josué Balbontín. Este repositorio reúne ejercicios y un CV interactivo para practicar JavaScript, HTML y CSS con el objetivo de crear un currículum atractivo para reclutadores en la asignatura Programación Web.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josue-balbontin/isw-233-jgbu.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/josue-balbontin/isw-233-jgbu/issues"
+  },
+  "homepage": "https://github.com/josue-balbontin/isw-233-jgbu#readme",
+  "devDependencies": {
+    "vite": "^8.0.5"
+  }
+}

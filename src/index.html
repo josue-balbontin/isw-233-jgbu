@@ -11,13 +11,7 @@
 </head>
 
 <body>
-    <nav class="navbard">
-        <a class="nav__link" href="/">Home</a>
-        <a class="nav__link" href="/about">Sobre Mi </a>
-        <a class="nav__link" href="/proyectos">Proyectos</a>
-        <a class="nav__link" href="/blog">Blog</a>
-        <a class="nav__link" href="/contacto">Contacto</a>
-    </nav>
+    {{> nav}}
 
 
     <section id="main">
@@ -25,9 +19,7 @@
     </section>
     
 
-    <footer class="footer">
-        <p>Josue Balbontin 2026</p>
-    </footer>
+   {{> footer nombre="Josue Balbontin" anho="2026" }}
 
 </body>
 

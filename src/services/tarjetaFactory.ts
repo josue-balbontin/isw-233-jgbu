@@ -1,7 +1,7 @@
 
 class tarjeta{
 
-    static generarContenidoInterno(datos , usarLazy = false){
+    static generarContenidoInterno(datos : any , usarLazy = false) : string{
         
         const atributoImagen = usarLazy ? `data-imagen="${datos.imagen}"` : `src="${datos.imagen}"`;
 
@@ -14,14 +14,14 @@ class tarjeta{
         `
     }
 
-    static crearTarjeta(datos){
+    static crearTarjeta(datos : any) : string{
         throw new Error("El método crearTarjeta() debe ser sobrescrito en la clase hija");
     }
 }
 
 
 export class tarjetaVertical extends tarjeta{
-    static crearTarjeta(datos, usarLazy = false){
+    static crearTarjeta(datos: any, usarLazy = false) : string{
         return /*html*/`
           <app-tarjeta id="${datos.id}" >
             ${this.generarContenidoInterno(datos, usarLazy)}
@@ -36,7 +36,7 @@ export class tarjetaVertical extends tarjeta{
 
 
 export class tarjetaHorizontal extends tarjeta{
-    static crearTarjeta(datos , usarLazy = false){
+    static crearTarjeta(datos: any, usarLazy = false) : string{
         return /*html*/`
             <app-tarjeta direccion="horizontal" id="${datos.id}">
                   ${this.generarContenidoInterno(datos, usarLazy)} 
@@ -49,7 +49,7 @@ export class tarjetaHorizontal extends tarjeta{
 
 
 export class tarjetaHorizontalReversa extends tarjeta{
-    static crearTarjeta(datos, usarLazy = false){
+    static crearTarjeta(datos: any, usarLazy = false) : string{
         return /*html*/`
             <app-tarjeta direccion="horizontal-reversa" id="${datos.id}">
                  ${this.generarContenidoInterno(datos, usarLazy)}
@@ -62,18 +62,21 @@ export class tarjetaHorizontalReversa extends tarjeta{
 
 
 export class tarjetaVerticalFavorito extends tarjeta{
-    static crearTarjeta(datos , classfavorito , usarLazy = false){
+    static crearTarjeta(datos: any, classfavorito = "page-blog__boton-favorito page-blog__boton-favorito--no-favorito", usarLazy = false,
+    ): string {
+        const clase = classfavorito.trim();
+
         return /*html*/`
             <app-tarjeta id="${datos.id}">
                 ${this.generarContenidoInterno(datos, usarLazy)}
 
                 <div slot="acciones">
-                    <button class="${classfavorito}" >Favorito</button>
+                    <button type="button" class="${clase}">Favorito</button>
                 </div>
 
             </app-tarjeta>
 
-        `
+        `;
     }
 
 

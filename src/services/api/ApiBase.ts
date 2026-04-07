@@ -1,6 +1,8 @@
 export const  ApiBase = {
+    url : "" ,
     
-    async obtener(){
+
+    async obtener() : Promise<any[]>{
         try{
             const respuesta = await fetch(this.url);
 

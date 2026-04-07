@@ -1,4 +1,3 @@
-import './index.css';
 
 import { Presentacion } from "./blocks/home/__presentacion/home__presentacion.js";
 import { SobreMi } from "./blocks/home/__sobre-mi/home__sobre-mi.js";

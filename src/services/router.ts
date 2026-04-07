@@ -1,11 +1,15 @@
 
 const router = {
-    enrutar(){
+    enrutar() : void{
         document.querySelectorAll("a.nav__link").forEach((a) => {
             a.addEventListener("click", (event) => {
                 event.preventDefault();
-                const href = event.target.getAttribute("href");
-                this.ir(href);
+                const href = a.getAttribute("href");
+                
+                if(href){
+                     this.ir(href);
+                }
+           
             });
         });
         window.addEventListener("popstate", (event) => {
@@ -14,28 +18,34 @@ const router = {
         this.ir(location.pathname);
     },
 
-    ir(route, addToHistory = true){
+    ir(route : string, addToHistory = true ) : void{
         if (addToHistory) {
             history.pushState({ route }, "", route);
         }
+        const main = document.getElementById("main");
+        if(!main){
+            console.error("No se encontró el elemento con id 'main'");
+            return;
+        }
+
 
         switch(route){
             case "/about":
-                document.getElementById("main").innerHTML = "<page-about></page-about>";
+                main.innerHTML = "<page-about></page-about>";
             break;
             case "/proyectos":
-                document.getElementById("main").innerHTML = "<page-proyecto></page-proyecto>";
+                main.innerHTML = "<page-proyecto></page-proyecto>";
             break;
             case "/blog":
-                document.getElementById("main").innerHTML = "<page-blog></page-blog>";
+                main.innerHTML = "<page-blog></page-blog>";
             break;
             case "/contacto":
-                document.getElementById("main").innerHTML = "<page-contacto></page-contacto>";
+                main.innerHTML = "<page-contacto></page-contacto>";
             break;
             
             
             default:
-                document.getElementById("main").innerHTML = "<app-home></app-home>";
+                main.innerHTML = "<app-home></app-home>";
         }
 
        

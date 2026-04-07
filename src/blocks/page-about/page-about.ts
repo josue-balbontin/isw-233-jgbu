@@ -32,26 +32,22 @@ const html =/*html*/`
 
 
 export class PageAbout extends HTMLElement {
-    constructor(){
+    private shadow: ShadowRoot;
+
+    constructor() {
         super();
         this.shadow = this.attachShadow({ mode: "open" });
-        this.crearHtml(); 
-        
-        
+        this.crearHtml();
     }
 
-    crearHtml(){
-       this.shadow.innerHTML = html;
-        
+    crearHtml(): void {
+        this.shadow.innerHTML = html;
+
         const style = document.createElement("style");
-  
         style.innerHTML = estiloAbout;
 
         this.shadow.appendChild(style);
     }
-
-
-
 }
 
-customElements.define("page-about", PageAbout)
+customElements.define("page-about", PageAbout);

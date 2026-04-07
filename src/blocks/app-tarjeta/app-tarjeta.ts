@@ -28,27 +28,29 @@ templateTarjeta.innerHTML =/*html*/`
 `;
 
 export class AppTarjeta extends HTMLElement {
-    constructor(){
-        super(); 
-        this.DOM = this.attachShadow({mode : "open"});
+    private DOM: ShadowRoot;
+    private resizeObserver: WrapperResizeObserver | null;
+
+    constructor() {
+        super();
+        this.DOM = this.attachShadow({ mode: "open" });
         this.resizeObserver = null;
-        this.crearHTML(); 
-    
+        this.crearHTML();
     }
 
-    connectedCallback() {
+    connectedCallback(): void {
         this.iniciarResizeObserver();
         this.actualizarModoCompacto(this.getBoundingClientRect().width);
     }
 
-    disconnectedCallback() {
+    disconnectedCallback(): void {
         if (this.resizeObserver) {
             this.resizeObserver.destructor();
             this.resizeObserver = null;
         }
     }
 
-    crearHTML(){
+    crearHTML(): void {
         this.DOM.appendChild(templateTarjeta.content.cloneNode(true));
 
         const style = document.createElement("style");
@@ -61,12 +63,12 @@ export class AppTarjeta extends HTMLElement {
 
     }
 
-    iniciarResizeObserver() {
+    iniciarResizeObserver(): void {
         if (this.resizeObserver) {
             this.resizeObserver.destructor();
         }
 
-        const callback = (entradas) => {
+        const callback: ResizeObserverCallback = (entradas) => {
             entradas.forEach((entrada) => {
                 this.actualizarModoCompacto(entrada.contentRect.width);
             });
@@ -76,7 +78,7 @@ export class AppTarjeta extends HTMLElement {
         this.resizeObserver.observar(this);
     }
 
-    actualizarModoCompacto(ancho) {
+    actualizarModoCompacto(ancho: number): void {
         const direccion = this.getAttribute("direccion");
         const esHorizontal = direccion === "horizontal" || direccion === "horizontal-reversa";
         const activarModoCompacto = esHorizontal && ancho < 450;

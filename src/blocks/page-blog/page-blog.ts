@@ -1,9 +1,9 @@
 import { ApiBase } from "../../services/api/ApiBase.js";
 import { AppGrilla } from "../app-grilla/app-grilla.js";
 import { AppTarjeta } from "../app-tarjeta/app-tarjeta.js";
-import { tarjetaHorizontal, tarjetaVertical, tarjetaVerticalFavorito } from "../../services/tarjetaFactory.js";
+import { tarjetaVerticalFavorito } from "../../services/tarjetaFactory.js";
 
-import { Buscadorinput } from "../../services/buscadorInput.ts";
+import { Buscadorinput } from "../../services/BuscadorInput.js";
 import { Filtro } from "../../services/Filtro.js";
 import { blogFavoritos } from "../../services/BlogFavoritos.js";
 import { WrapperIntersectionObserver } from "../../services/WrapperIntersationObserver.js";
@@ -34,25 +34,36 @@ const html = /*html*/`
 
 
 export class PageBlog extends HTMLElement {
-    constructor(){
-        super(); 
-        this.shadow = this.attachShadow({mode : "open"});
-        
+    private shadow: ShadowRoot;
+    private datos: Array<Record<string, any>>;
+    private datosFiltrados: Array<Record<string, any>>;
+    private categoriasvalores: string[];
+    private datosTitulo: string;
+    private datosCategoria: string;
+    private url: string;
+    private observer: WrapperIntersectionObserver | null;
+    private mutationObserver: WrapperMutationObserver | null;
+
+    obtener!: () => Promise<Array<Record<string, any>>>;
+
+    constructor() {
+        super();
+        this.shadow = this.attachShadow({ mode: "open" });
+
         this.datos = [];
         this.datosFiltrados = [];
         this.categoriasvalores = [];
 
         this.datosTitulo = "titulo";
-        this.datosCategoria="categoria"; 
-        
-        this.url = './data/blog.json';
+        this.datosCategoria = "categoria";
+
+        this.url = "./data/blog.json";
 
         this.observer = null;
         this.mutationObserver = null;
-        
     }
 
-    async connectedCallback(){
+    async connectedCallback(): Promise<void> {
             
         this.crearHTML();
 
@@ -71,7 +82,7 @@ export class PageBlog extends HTMLElement {
         this.inicializarFavoritos(); 
     }
 
-    disconnectedCallback(){
+    disconnectedCallback(): void {
         if (this.observer) {
             this.observer.destructor();
             this.observer = null;
@@ -83,7 +94,7 @@ export class PageBlog extends HTMLElement {
         }
     }
 
-    crearHTML(){
+    crearHTML(): void {
         this.shadow.innerHTML = html;
         
         const style = document.createElement("style");
@@ -95,17 +106,20 @@ export class PageBlog extends HTMLElement {
     }
 
 
-    async cargarDatos(){
+    async cargarDatos(): Promise<void> {
         this.datos = await this.obtener();
         
         this.categoriasvalores = Filtro.obtenerValoresUnicos(this.datos , this.datosCategoria);
         
     }
 
-    inicializarCategorias(){
-        const blogCategorias = this.shadow.querySelector('.page-blog__categorias')
+    inicializarCategorias(): void {
+        const blogCategorias = this.shadow.querySelector<HTMLElement>('.page-blog__categorias');
+        if (!blogCategorias) {
+            return;
+        }
 
-        const opcionesHTML = this.categoriasvalores.map(elemento =>{
+        const opcionesHTML = this.categoriasvalores.map((elemento) => {
                      return `<p>${elemento}</p>`;
         }).join('');
 
@@ -113,10 +127,10 @@ export class PageBlog extends HTMLElement {
 
     }
 
-    imprimirDatos(datos){
+    imprimirDatos(datos: Array<Record<string, any>>): void {
         
         const tarjetasHTML = datos.map(
-                dato =>{
+                (dato) => {
                     if(blogFavoritos.esFavorito(dato.id)){
                         return tarjetaVerticalFavorito.crearTarjeta(dato , " page-blog__boton-favorito page-blog__boton-favorito--favorito" , true);
                     }
@@ -127,12 +141,17 @@ export class PageBlog extends HTMLElement {
                 } 
         ).join('');
 
-        this.shadow.querySelector('app-grilla').innerHTML = tarjetasHTML;
+        const grilla = this.shadow.querySelector<HTMLElement>('app-grilla');
+        if (!grilla) {
+            return;
+        }
+
+        grilla.innerHTML = tarjetasHTML;
 
         this.iniciarIntersectionObserver(); 
     }
 
-    iniciarIntersectionObserver(){
+    iniciarIntersectionObserver(): void {
         if(this.observer){
             this.observer.destructor();
         }
@@ -143,17 +162,17 @@ export class PageBlog extends HTMLElement {
             threshold: 0
         };
 
-        const callback = (entradas) =>{
-            entradas.forEach(entrada => {
+        const callback: IntersectionObserverCallback = (entradas) => {
+            entradas.forEach((entrada) => {
                 if (entrada.isIntersecting) {
-                    const img = entrada.target; 
+                    const img = entrada.target as HTMLImageElement;
 
                     if (img.dataset.imagen) {
                         img.src = img.dataset.imagen;
                         img.removeAttribute('data-imagen');
                     }
 
-                    this.observer.dejarDeObservar(img);
+                    this.observer?.dejarDeObservar(img);
                 }
 
             });
@@ -161,10 +180,10 @@ export class PageBlog extends HTMLElement {
 
         this.observer = new WrapperIntersectionObserver(opciones , callback);
 
-        const imagenesLazy = this.shadow.querySelectorAll('img[data-imagen]');
+        const imagenesLazy = this.shadow.querySelectorAll<HTMLImageElement>('img[data-imagen]');
 
         imagenesLazy.forEach(img => {
-            this.observer.observar(img);
+            this.observer?.observar(img);
         });
     }
 
@@ -184,22 +203,24 @@ export class PageBlog extends HTMLElement {
             subtree: false
         };
 
-        const callback = (listaMutaciones) => {
-            listaMutaciones.forEach(mutacion => {
+        const callback: MutationCallback = (listaMutaciones) => {
+            listaMutaciones.forEach((mutacion) => {
                 if (mutacion.type !== 'childList' || mutacion.addedNodes.length === 0) {
                     return;
                 }
 
-                mutacion.addedNodes.forEach(nodo => {
+                mutacion.addedNodes.forEach((nodo) => {
                     if (nodo.nodeType !== Node.ELEMENT_NODE) {
                         return;
                     }
 
-                    if (!nodo.matches('app-tarjeta')) {
+                    const elemento = nodo as Element;
+
+                    if (!elemento.matches('app-tarjeta')) {
                         return;
                     }
 
-                    nodo.classList.add('page-blog__tarjeta-aparecer');
+                    elemento.classList.add('page-blog__tarjeta-aparecer');
                 });
             });
         };
@@ -209,9 +230,9 @@ export class PageBlog extends HTMLElement {
     }
 
 
-    buscador(){
-        const input = this.shadow.querySelector('.page-blog__input-buscar');
-        const boton = this.shadow.querySelector('.page-blog__boton-buscar');
+    buscador(): void {
+        const input = this.shadow.querySelector<HTMLInputElement>('.page-blog__input-buscar');
+        const boton = this.shadow.querySelector<HTMLButtonElement>('.page-blog__boton-buscar');
         
         Buscadorinput.detectarCambio( input , boton , (texto) =>{
             this.datosFiltrados = Filtro.filtrar(this.datos, this.datosTitulo, texto );
@@ -227,9 +248,13 @@ export class PageBlog extends HTMLElement {
     }
 
 
-    categorias(){
-        const botonCategoria = this.shadow.querySelector('.page-blog__boton-categoria');
-        const blogCategorias = this.shadow.querySelector('.page-blog__categorias')
+    categorias(): void {
+        const botonCategoria = this.shadow.querySelector<HTMLButtonElement>('.page-blog__boton-categoria');
+        const blogCategorias = this.shadow.querySelector<HTMLElement>('.page-blog__categorias');
+
+        if (!botonCategoria || !blogCategorias) {
+            return;
+        }
 
         botonCategoria.addEventListener('click', () => {
 
@@ -237,9 +262,13 @@ export class PageBlog extends HTMLElement {
 
         })
 
-        blogCategorias.addEventListener('click' ,   (event)=> {
-            if(event.target.matches('p')){
-                const categoria =event.target.textContent;
+        blogCategorias.addEventListener('click', (event: MouseEvent) => {
+            const target = event.target;
+            if (!(target instanceof Element) || !target.matches('p')) {
+                return;
+            }
+
+            const categoria = target.textContent;
                 
                 if(categoria === 'Todos'){
                     this.datosFiltrados = this.datos;
@@ -247,29 +276,36 @@ export class PageBlog extends HTMLElement {
                     return;
                 }
 
-                this.datosFiltrados = Filtro.filtrar(this.datos , this.datosCategoria , categoria );
+                this.datosFiltrados = Filtro.filtrar(this.datos , this.datosCategoria , categoria ?? "");
                 this.imprimirDatos(this.datosFiltrados); 
-
-            }
-
-           
-        })
+        });
 
 
 
     }
 
 
-    inicializarFavoritos() {
-    const grilla = this.shadow.querySelector('app-grilla');
+    inicializarFavoritos(): void {
+        const grilla = this.shadow.querySelector<HTMLElement>('app-grilla');
+        if (!grilla) {
+            return;
+        }
 
-        grilla.addEventListener('click', (event) => {
-            
-            const botonFavorito = event.target.closest('.page-blog__boton-favorito'); 
+        grilla.addEventListener('click', (event: MouseEvent) => {
+            const target = event.target;
+            if (!(target instanceof Element)) {
+                return;
+            }
+
+            const botonFavorito = target.closest('.page-blog__boton-favorito') as HTMLElement | null;
             
             if (!botonFavorito) return; 
 
-            const tarjetaPadre = botonFavorito.closest('app-tarjeta');
+            const tarjetaPadre = botonFavorito.closest('app-tarjeta') as HTMLElement | null;
+            if (!tarjetaPadre) {
+                return;
+            }
+
             const idArticulo = tarjetaPadre.id;
 
 

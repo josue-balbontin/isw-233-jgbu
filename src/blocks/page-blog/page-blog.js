@@ -3,7 +3,7 @@ import { AppGrilla } from "../app-grilla/app-grilla.js";
 import { AppTarjeta } from "../app-tarjeta/app-tarjeta.js";
 import { tarjetaHorizontal, tarjetaVertical, tarjetaVerticalFavorito } from "../../services/tarjetaFactory.js";
 
-import { Buscadorinput } from "../../services/buscadorInput.js";
+import { Buscadorinput } from "../../services/buscadorInput.ts";
 import { Filtro } from "../../services/Filtro.js";
 import { blogFavoritos } from "../../services/BlogFavoritos.js";
 import { WrapperIntersectionObserver } from "../../services/WrapperIntersationObserver.js";

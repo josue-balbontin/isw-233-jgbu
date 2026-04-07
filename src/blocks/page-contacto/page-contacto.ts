@@ -20,23 +20,23 @@ const html= /*html*/`
 
 `; 
 
-export class PageContacto extends HTMLElement{
-    constructor(){
-        super(); 
-        this.shadow = this.attachShadow({mode : "open"});
-        this.crearHTML(); 
+export class PageContacto extends HTMLElement {
+    private shadow: ShadowRoot;
+
+    constructor() {
+        super();
+        this.shadow = this.attachShadow({ mode: "open" });
+        this.crearHTML();
     }
 
-    crearHTML(){
+    crearHTML(): void {
         this.shadow.innerHTML = html;
-        
+
         const style = document.createElement("style");
-  
         style.innerHTML = estiloContacto;
 
         this.shadow.appendChild(style);
     }
-
 }
 
 customElements.define("page-contacto", PageContacto); 

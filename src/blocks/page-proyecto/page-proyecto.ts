@@ -15,49 +15,52 @@ const html = /*html*/`
 
 
 export class PageProyecto extends HTMLElement {
-    constructor(){
-        super(); 
-        this.shadow = this.attachShadow({mode : "open" });
-        this.datos = []; 
-        
-        this.url = './data/proyecto.json';
+    private shadow: ShadowRoot;
+    private datos: any[];
+    private url: string;
 
+    obtener!: () => Promise<any[]>;
+
+    constructor() {
+        super();
+        this.shadow = this.attachShadow({ mode: "open" });
+        this.datos = [];
+        this.url = "./data/proyecto.json";
     }
 
-    async connectedCallback(){
-        this.crearHTML(); 
+    async connectedCallback() {
+        this.crearHTML();
 
         await this.cargarDatos();
 
-        this.imprimirProyectos(); 
+        this.imprimirProyectos();
     }
 
-    crearHTML(){
+    crearHTML(): void {
         this.shadow.innerHTML = html;
-        
+
         const style = document.createElement("style");
-  
         style.innerHTML = estiloProyecto;
 
         this.shadow.appendChild(style);
     }
 
-    async cargarDatos(){ 
-        this.datos = await this.obtener(); 
+    async cargarDatos(): Promise<void> {
+        this.datos = await this.obtener();
     }
 
-    imprimirProyectos(){
+    imprimirProyectos(): void {
         const grilla = this.shadow.querySelector("app-grilla");
+        if (!grilla) {
+            return;
+        }
 
-        const tarjetasHTML = this.datos.map(proyecto=>
-        {
-            return tarjetaVertical.crearTarjeta(proyecto); 
-        }).join("");
+        const tarjetasHTML = this.datos
+            .map((proyecto) => tarjetaVertical.crearTarjeta(proyecto))
+            .join("");
 
         grilla.innerHTML = tarjetasHTML;
-
     }
-
 }
 
 Object.assign(PageProyecto.prototype, ApiBase);

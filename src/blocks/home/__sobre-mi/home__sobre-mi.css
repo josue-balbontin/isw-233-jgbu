@@ -39,7 +39,7 @@
     padding: 0 5%;
 }
 
-.sobre-mi__boton{
+.sobre-mi__contenido .sobre-mi__boton{
     align-self: flex-end;
     margin-right: 10%;
     margin-bottom: 1%;

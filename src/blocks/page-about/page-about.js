@@ -1,5 +1,6 @@
 import { AppTarjeta } from "../app-tarjeta/app-tarjeta.js";
 
+import estiloAbout from "./page-about.css?inline";
 
 const html =/*html*/`
     <section class = "page-about">
@@ -44,11 +45,7 @@ export class PageAbout extends HTMLElement {
         
         const style = document.createElement("style");
   
-        fetch ('/blocks/page-about/page-about.css').then(
-            response => response.text().then(
-                css => style.innerHTML = css
-            )
-        );
+        style.innerHTML = estiloAbout;
 
         this.shadow.appendChild(style);
     }

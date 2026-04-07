@@ -1,6 +1,8 @@
 
 import { WrapperResizeObserver } from "../../services/WrapperResizeObserver.js";
 
+import estilosTarjeta from './app-tarjeta.css?inline';
+
 const templateTarjeta = document.createElement('template');
 
 templateTarjeta.innerHTML =/*html*/`
@@ -51,11 +53,7 @@ export class AppTarjeta extends HTMLElement {
 
         const style = document.createElement("style");
 
-        fetch ('/blocks/app-tarjeta/app-tarjeta.css').then(
-            respuesta => respuesta.text().then(
-                css => style.innerHTML = css             
-            )
-        );
+        style.innerHTML = estilosTarjeta;
 
         this.DOM.appendChild(style);
 

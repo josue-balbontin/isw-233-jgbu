@@ -1,3 +1,4 @@
+import estiloContacto from "./page-contacto.css?inline";
 
 const html= /*html*/`
     <section class="page-contacto">
@@ -31,11 +32,7 @@ export class PageContacto extends HTMLElement{
         
         const style = document.createElement("style");
   
-        fetch ('/blocks/page-contacto/page-contacto.css').then(
-            response => response.text().then(
-                css => style.innerHTML = css
-            )
-        );
+        style.innerHTML = estiloContacto;
 
         this.shadow.appendChild(style);
     }

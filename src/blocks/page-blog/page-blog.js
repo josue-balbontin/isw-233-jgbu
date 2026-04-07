@@ -9,6 +9,8 @@ import { blogFavoritos } from "../../services/BlogFavoritos.js";
 import { WrapperIntersectionObserver } from "../../services/WrapperIntersationObserver.js";
 import { WrapperMutationObserver } from "../../services/WrapperMutationObserver.js";
 
+import estiloBlog from './page-blog.css?inline';
+
 const html = /*html*/` 
     <section class = "page-blog">
         <h1 class="page-blog__titulo">Blog </h1>
@@ -86,11 +88,7 @@ export class PageBlog extends HTMLElement {
         
         const style = document.createElement("style");
   
-        fetch ('/blocks/page-blog/page-blog.css').then(
-            response => response.text().then(
-                css => style.innerHTML = css
-            )
-        );
+        style.innerHTML = estiloBlog;
 
         this.shadow.appendChild(style);
 

@@ -1,4 +1,6 @@
 
+import estiloGrilla from './app-grilla.css?inline' ;
+
 const templategrilla = document.createElement("template"); 
 
 templategrilla.innerHTML= /*html*/`
@@ -32,11 +34,7 @@ export class AppGrilla extends HTMLElement{
 
         const style = document.createElement("style"); 
 
-        fetch('/blocks/app-grilla/app-grilla.css').then(
-            respuesta => respuesta.text().then(
-                estilo => style.innerHTML = estilo
-            )
-        )
+        style.innerHTML = estiloGrilla;
 
         this.DOM.appendChild(style);
 

@@ -2,6 +2,8 @@ import { ApiBase } from "../../services/api/ApiBase.js";
 import { tarjetaVertical } from "../../services/tarjetaFactory.js";
 import { AppGrilla } from "../app-grilla/app-grilla.js";
 
+import estiloProyecto from "./page-proyecto.css?inline" ;
+
 const html = /*html*/`
     <section class="page-proyecto">
         <h1 class="page-proyecto__titulo">Proyectos</h1>
@@ -35,11 +37,7 @@ export class PageProyecto extends HTMLElement {
         
         const style = document.createElement("style");
   
-        fetch ('/blocks/page-proyecto/page-proyecto.css').then(
-            response => response.text().then(
-                css => style.innerHTML = css
-            )
-        );
+        style.innerHTML = estiloProyecto;
 
         this.shadow.appendChild(style);
     }

@@ -12,12 +12,17 @@ export default (env, argv) => {
   const isProduction = argv.mode === 'production';
 
   return {
-    entry: './src/main.js',
+    entry: './src/main.ts',
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: isProduction ? '[name].[contenthash].js' : '[name].js',
       clean: true, 
     },
+
+    resolve: {
+      extensions: ['.ts', '.js'],
+    },
+
     devServer: {
       static: path.resolve(__dirname, 'dist'),
       hot: true,
@@ -46,6 +51,12 @@ export default (env, argv) => {
     ],
     module: {
       rules: [
+
+        {
+          test: /\.ts$/,
+          use: 'ts-loader',
+          exclude: /node_modules/,
+        },
 
         {
           test: /\.html$/i,

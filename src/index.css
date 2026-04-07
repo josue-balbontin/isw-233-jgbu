@@ -1,12 +1,14 @@
-@import './vendor/externs.css';
-@import './blocks/home/blog/blog.css';
-@import './blocks/boton/boton.css';
-@import './blocks/home/experiencia/experiencia.css';
-@import './blocks/footer/footer.css';
-@import './blocks/navbard/navbard.css';
-@import './blocks/home/presentacion/presentacion.css';
-@import './blocks/home/sobre-mi/sobre-mi.css';
+@import "./vendor/externs.css";
 
+@import "./blocks/navbard/navbard.css";
+@import "./blocks/footer/footer.css";
+
+
+@import "./blocks/home/__presentacion/home__presentacion.css";
+@import "./blocks/home/__sobre-mi/home__sobre-mi.css";
+@import "./blocks/home/__blog/home__blog.css";
+@import "./blocks/home/__experiencia/home__experiencia.css";
+@import "./blocks/boton/boton.css";
 
 body {
     background-color: #383838;

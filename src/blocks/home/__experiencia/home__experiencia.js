@@ -1,6 +1,7 @@
-import imgPasa from './img/pasa.png';
-import imgArqui from './img/arqui.png';
-import imgTickets from './img/tickets.png';
+import imgPasa from '../../../img/pasa.png';
+import imgArqui from '../../../img/arqui.png';
+import imgTickets from '../../../img/tickets.png';
+
 import imgInspection from './img/inds_inspectionpng.png';
 import imgWhitebelt from './img/whitebelt.png';
 import imgGoogle from './img/google.png';

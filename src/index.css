@@ -3,11 +3,12 @@
 @import "./blocks/navbard/navbard.css";
 @import "./blocks/footer/footer.css";
 
-
-@import "./blocks/home/__presentacion/home__presentacion.css";
-@import "./blocks/home/__sobre-mi/home__sobre-mi.css";
 @import "./blocks/home/__blog/home__blog.css";
 @import "./blocks/home/__experiencia/home__experiencia.css";
+@import "./blocks/home/__presentacion/home__presentacion.css";
+@import "./blocks/home/__sobre-mi/home__sobre-mi.css";
+
+
 @import "./blocks/boton/boton.css";
 
 body {

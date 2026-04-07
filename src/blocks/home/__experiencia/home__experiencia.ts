@@ -69,7 +69,7 @@ export class Experiencia extends HTMLElement {
         this.crearExperiencia();
     }
 
-    crearExperiencia() {
+    crearExperiencia() : void {
         this.innerHTML = proyectos + experiencia;
     }
 

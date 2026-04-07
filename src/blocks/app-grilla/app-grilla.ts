@@ -12,34 +12,28 @@ templategrilla.innerHTML= /*html*/`
 `; 
 
 
-export class AppGrilla extends HTMLElement{
-    constructor(){
-        super(); 
-        this.DOM = this.attachShadow({mode : "open"});
-    }
-    
+export class AppGrilla extends HTMLElement {
+    private DOM: ShadowRoot;
 
-    connectedCallback(){
-        this.crearHTML(); 
+    constructor() {
+        super();
+        this.DOM = this.attachShadow({ mode: "open" });
+    }
+
+    connectedCallback(): void {
+        this.crearHTML();
 
         const columnas = this.getAttribute("columnas") || "auto-fit";
-
         this.style.setProperty("--num-columnas", columnas);
-
-
     }
 
-    crearHTML(){
+    crearHTML(): void {
         this.DOM.appendChild(templategrilla.content.cloneNode(true));
 
-        const style = document.createElement("style"); 
-
+        const style = document.createElement("style");
         style.innerHTML = estiloGrilla;
-
         this.DOM.appendChild(style);
-
     }
-
 }
 
 customElements.define("app-grilla", AppGrilla);

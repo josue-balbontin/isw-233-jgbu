@@ -16,29 +16,29 @@ const html =/*html*/`
 
 
 export class Blog extends HTMLElement {
+    private url: string;
+    obtener!: () => Promise<Array<Record<string, any>>>;
+
     constructor() {
         super();
         this.url = './data/blog.json';
-        
     }
 
-    async connectedCallback(){
-        
+    async connectedCallback(): Promise<void> {
         this.crearBlog();
 
-    
         const blogData = await this.obtener();
-            
-        const tarjetasHTML = blogData.slice(0, 3).map(element => {
+        const tarjetasHTML = blogData.slice(0, 3).map((element) => {
             return tarjetaVertical.crearTarjeta(element);
         }).join('');
 
-            this.querySelector('.blog__lista').innerHTML = tarjetasHTML;
-        
-    
+        const lista = this.querySelector<HTMLElement>('.blog__lista');
+        if (lista) {
+            lista.innerHTML = tarjetasHTML;
+        }
     }
 
-    crearBlog() {
+    crearBlog(): void {
         this.innerHTML = html;
     }
     

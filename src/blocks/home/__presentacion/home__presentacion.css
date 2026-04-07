@@ -9,7 +9,7 @@ display: flex;
     padding-bottom: clamp(80px, 9vw, 200px);
     
 
-    background-image: url('./img/Rectangle.svg');
+    background-image: url('./blocks/home/__presentacion/img/Rectangle.svg');
     background-size: cover;
     background-repeat: no-repeat;
 }

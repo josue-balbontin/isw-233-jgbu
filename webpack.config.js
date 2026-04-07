@@ -51,6 +51,7 @@ export default (env, argv) => {
           loader: 'handlebars-loader',
           options: {
             partialDirs: [path.resolve(__dirname, 'src/partials')],
+            extensions: ['.html'],
           },
         },
 

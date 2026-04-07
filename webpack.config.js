@@ -40,6 +40,7 @@ export default (env, argv) => {
       new CopyWebpackPlugin({
         patterns: [
           { from: 'src/data', to: 'data' },
+          { from: 'src/img', to: 'img' }
         ],
       }),
     ],

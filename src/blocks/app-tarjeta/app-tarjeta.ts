@@ -1,5 +1,5 @@
 
-import { WrapperResizeObserver } from "../../services/WrapperResizeObserver.js";
+import { WrapperResizeObserver } from "../../services/WrapperResizeObserver";
 
 import estilosTarjeta from './app-tarjeta.css?inline';
 

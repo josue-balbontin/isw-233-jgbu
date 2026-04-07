@@ -1,6 +1,6 @@
-import { AppTarjeta } from "../../app-tarjeta/app-tarjeta.js";
-import { ApiBase } from "../../../services/api/ApiBase.js";
-import { tarjetaVertical } from "../../../services/tarjetaFactory.js";
+import { AppTarjeta } from "../../app-tarjeta/app-tarjeta";
+import { ApiBase } from "../../../services/api/ApiBase";
+import { tarjetaVertical } from "../../../services/tarjetaFactory";
 
 const html =/*html*/`
   <section class="blog">
@@ -17,7 +17,7 @@ const html =/*html*/`
 
 export class Blog extends HTMLElement {
     private url: string;
-    obtener!: () => Promise<Array<Record<string, any>>>;
+    declare obtener: () => Promise<Array<Record<string, any>>>;
 
     constructor() {
         super();

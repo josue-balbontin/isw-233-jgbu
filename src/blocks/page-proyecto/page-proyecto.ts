@@ -1,6 +1,6 @@
-import { ApiBase } from "../../services/api/ApiBase.js";
-import { tarjetaVertical } from "../../services/tarjetaFactory.js";
-import { AppGrilla } from "../app-grilla/app-grilla.js";
+import { ApiBase } from "../../services/api/ApiBase";
+import { tarjetaVertical } from "../../services/tarjetaFactory";
+import { AppGrilla } from "../app-grilla/app-grilla";
 
 import estiloProyecto from "./page-proyecto.css?inline" ;
 
@@ -19,7 +19,7 @@ export class PageProyecto extends HTMLElement {
     private datos: any[];
     private url: string;
 
-    obtener!: () => Promise<any[]>;
+    declare obtener: () => Promise<any[]>;
 
     constructor() {
         super();

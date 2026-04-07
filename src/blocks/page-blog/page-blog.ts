@@ -1,13 +1,13 @@
-import { ApiBase } from "../../services/api/ApiBase.js";
-import { AppGrilla } from "../app-grilla/app-grilla.js";
-import { AppTarjeta } from "../app-tarjeta/app-tarjeta.js";
-import { tarjetaVerticalFavorito } from "../../services/tarjetaFactory.js";
+import { ApiBase } from "../../services/api/ApiBase";
+import { AppGrilla } from "../app-grilla/app-grilla";
+import { AppTarjeta } from "../app-tarjeta/app-tarjeta";
+import { tarjetaVerticalFavorito } from "../../services/tarjetaFactory";
 
-import { Buscadorinput } from "../../services/BuscadorInput.js";
-import { Filtro } from "../../services/Filtro.js";
-import { blogFavoritos } from "../../services/BlogFavoritos.js";
-import { WrapperIntersectionObserver } from "../../services/WrapperIntersationObserver.js";
-import { WrapperMutationObserver } from "../../services/WrapperMutationObserver.js";
+import { Buscadorinput } from "../../services/BuscadorInput";
+import { Filtro } from "../../services/Filtro";
+import { blogFavoritos } from "../../services/BlogFavoritos";
+import { WrapperIntersectionObserver } from "../../services/WrapperIntersationObserver";
+import { WrapperMutationObserver } from "../../services/WrapperMutationObserver";
 
 import estiloBlog from './page-blog.css?inline';
 
@@ -44,7 +44,7 @@ export class PageBlog extends HTMLElement {
     private observer: WrapperIntersectionObserver | null;
     private mutationObserver: WrapperMutationObserver | null;
 
-    obtener!: () => Promise<Array<Record<string, any>>>;
+    declare obtener: () => Promise<Array<Record<string, any>>>;
 
     constructor() {
         super();

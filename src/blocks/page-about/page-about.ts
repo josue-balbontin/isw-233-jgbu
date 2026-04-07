@@ -1,4 +1,4 @@
-import { AppTarjeta } from "../app-tarjeta/app-tarjeta.js";
+import { AppTarjeta } from "../app-tarjeta/app-tarjeta";
 
 import estiloAbout from "./page-about.css?inline";
 
